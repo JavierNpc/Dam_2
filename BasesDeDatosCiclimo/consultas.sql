@@ -1,7 +1,7 @@
 -- Active: 1726053968786@@127.0.0.1@5432@ciclismo
 
 --1
-SELECT codigo, tipo , color , premio FROM maillot;
+SELECT codigo,tipo,color,premio FROM maillot;
 
 --2
 SELECT dorsal, nombre FROM ciclista
@@ -94,7 +94,7 @@ WHERE netapa not in (SELECT netapa from puerto )
 
 --17
 
-SELECT  avg(edad) FROM ciclista
+SELECT  avg(edad) FROM ciclista 
 WHERE dorsal in (SELECT dorsal from etapa) 
 
 --18
@@ -120,9 +120,8 @@ WHERE edad = (SELECT min(edad) from ciclista)
 
 --22
 
-SELECT nombre FROM ciclista as c
-WHERE edad = (SELECT min(edad) from ciclista) AND
-(SELECT count(*) from etapa WHERE c.dorsal = etapa.dorsal)>1
+SELECT nombre FROM ciclista INNER JOIN etapa USING (dorsal)
+WHERE edad = (SELECT min(edad) from ciclista c1 , etapa e1 WHERE c1.dorsal = e1.dorsal) 
 
 
 --23 
@@ -136,9 +135,31 @@ WHERE (SELECT count(*) from puerto WHERE c.dorsal = puerto.dorsal)>1
 SELECT DISTINCT p1.netapa from puerto p1
 WHERE not EXISTS (SELECT * from puerto p2 WHERE p2.altura <=700 and p1.netapa = p2.netapa)
 
---25
+--25 !!!
+
+SELECT DISTINCT nomeq, director from equipo INNER JOIN ciclista USING (nomeq)
+WHERE dorsal in (SELECT DISTINCT dorsal from ciclista WHERE edad > 25)
+
+--26
+
+Select DISTINCT c1.dorsal, nombre from ciclista c1 , etapa e1
+WHERE c1.dorsal = e1.dorsal AND EXISTS (SELECT netapa FROM etapa WHERE km > 170 and c1.dorsal = etapa.dorsal)
+ORDER BY c1.dorsal, nombre
+
+--27
+
+SELECT DISTINCT nombre from ciclista c1, etapa e1 , puerto p1
+WHERE c1.dorsal = e1.dorsal and e1.netapa = p1.netapa and
+not EXISTS (SELECT dorsal FROM puerto WHERE e1.netapa = puerto.netapa and c1.dorsal <> puerto.dorsal)
+
+--28 !!
+
+SELECT DISTINCT e1.nomeq FROM equipo e1 , ciclista c1 WHERE dorsal in ((SELECT dorsal FROM llevar INNER JOIN maillot USING (codigo) WHERE c1.dorsal = llevar.dorsal ) OR 
+(SELECT dorsal from puerto WHERE c1.dorsal = puerto.dorsal) )
 
 
+--29 Obtener el código y el color de aquellos maillots que sólo han sido llevados por ciclistas de un mismo equipo.
 
+SELECT DISTINCT codigo, color from maillot m1 WHERE EXISTS ()
 
-
+SELECT nomeq from equipo c1 WHERE nomeq = (SELECT nombre FROM e)
