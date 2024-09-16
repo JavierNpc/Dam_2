@@ -91,15 +91,41 @@ WHERE e1.netapa-1 = e2.netapa AND e1.salida <> e2.llegada
 
 SELECT DISTINCT etapa.netapa, salida FROM etapa 
 WHERE netapa not in (SELECT netapa from puerto )
-               
-   
-   
 
+--17
+
+SELECT  avg(edad) FROM ciclista
+WHERE dorsal in (SELECT dorsal from etapa) 
+
+--18
+
+SELECT  nompuerto FROM puerto
+WHERE altura > (SELECT avg(altura) from puerto) 
+
+--19
+
+SELECT  salida, llegada FROM etapa INNER JOIN puerto USING (netapa)
+WHERE pendiente = (SELECT max(pendiente) from puerto) 
+
+    
 --20
 SELECT ciclista.dorsal, nombre FROM ciclista INNER JOIN puerto USING (dorsal)
 WHERE ciclista.dorsal = puerto.dorsal and altura = (SELECT max(altura) from puerto)
 
---23
+--21
+
+SELECT nombre FROM ciclista 
+WHERE edad = (SELECT min(edad) from ciclista)
+
+
+--22
+
+SELECT nombre FROM ciclista as c
+WHERE edad = (SELECT min(edad) from ciclista) AND
+(SELECT count(*) from etapa WHERE c.dorsal = etapa.dorsal)>1
+
+
+--23 
 
 SELECT dorsal, nombre FROM ciclista as c
 WHERE (SELECT count(*) from puerto WHERE c.dorsal = puerto.dorsal)>1
