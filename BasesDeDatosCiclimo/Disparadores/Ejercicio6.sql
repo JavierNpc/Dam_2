@@ -10,6 +10,7 @@ VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
     if(OLD.nombre <> new.nombre)THEN
+        RAISE NOTICE "El nombre no se puede cambiar"
         new.nombre = OLD.nombre;
     end if;   
 RETURN new;
