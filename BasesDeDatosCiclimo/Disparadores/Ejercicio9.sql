@@ -10,7 +10,8 @@ VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
     if(OLD.edad>NEW.edad) THEN
-        RAISE EXCEPTION 'La edad solo puede ser mas alta';
+        RAISE NOTICE 'La edad solo puede ser mas alta';
+        RETURN null;
     End if;
 RETURN NEW;
 END;
