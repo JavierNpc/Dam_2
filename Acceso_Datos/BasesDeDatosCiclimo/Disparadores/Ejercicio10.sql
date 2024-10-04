@@ -1,5 +1,5 @@
 CREATE or REPLACE Trigger edad_update
-AFTER UPDATE of edad on ciclista
+AFTER UPDATE on ciclista
 for EACH row EXECUTE FUNCTION fn_edad_update();
 
 CREATE OR REPLACE FUNCTION fn_edad_update()
@@ -10,9 +10,9 @@ VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
 
-    UPDATE equipo set nºciclistas_equipo = new.nºciclistas_equipo+1 WHERE nomeq = new.nomeq;
-    UPDATE equipo set nºciclistas_equipo = OLD.nºciclistas_equipo-1 WHERE nomeq = new.nomeq;
-    
+    UPDATE equipo set nºciclistas_equipo = nºciclistas_equipo+1  WHERE nomeq = NEW.nomeq;
+    UPDATE equipo set nºciclistas_equipo = nºciclistas_equipo-1  WHERE nomeq = OLD.nomeq;
+
 RETURN NEW;
 END;
 $BODY$; 
@@ -31,9 +31,7 @@ VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
     
-  
     UPDATE equipo set nºciclistas_equipo = nºciclistas_equipo+1  WHERE nomeq = new.nomeq;
-  
   
 RETURN NEW;
 END;
@@ -54,7 +52,7 @@ VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
     
-    UPDATE equipo set nºciclistas_equipo = nºciclistas_equipo-1  WHERE nomeq = OLD.nomeq;
+   UPDATE equipo set nºciclistas_equipo = nºciclistas_equipo-1  WHERE nomeq = OLD.nomeq;
 
 RETURN NEW;
 END;
@@ -71,3 +69,6 @@ ORDER BY e1.nomeq
 INSERT INTO ciclista VALUES (104,'javi',25,'Banesto')
 
 DELETE FROM "ciclista" WHERE "dorsal"=104
+
+ UPDATE ciclista set nomeq = 'PDM'  WHERE dorsal = 1;
+ UPDATE ciclista set nomeq = 'Banesto'  WHERE dorsal = 1;

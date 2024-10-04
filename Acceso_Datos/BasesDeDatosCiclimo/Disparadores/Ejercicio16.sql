@@ -1,0 +1,2 @@
+--a
+INSERT INTO puerto VALUES ('VAL',2000,1,5.8,4,101)

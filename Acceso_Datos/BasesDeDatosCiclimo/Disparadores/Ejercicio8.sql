@@ -12,7 +12,7 @@ COST 100
 VOLATILE NOT LEAKPROOF
 AS $BODY$
 BEGIN
-    if ( (SELECT count(*)FROM ciclista WHERE ciclista.nomeq = new.nomeq)< 3) THEN
+    if ( (SELECT count(*) FROM ciclista WHERE ciclista.nomeq = new.nomeq)< 3) THEN
         RAISE EXCEPTION 'No se puede crear un equpo con menos de 3 ciclistas';
         RETURN NULL;
     ELSE

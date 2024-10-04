@@ -13,7 +13,8 @@ public class Calculartriangulo implements Runnable{
 
     @Override
     public void run() {
-       System.out.println((base*altura)/2+" cm2") ;
+        Thread hilo = Thread.currentThread();
+        System.out.println(hilo.getName()+" = "+(base*altura)/2+" cm2\n") ;
        
         
     }
