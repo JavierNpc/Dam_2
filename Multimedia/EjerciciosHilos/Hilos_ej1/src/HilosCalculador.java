@@ -29,3 +29,19 @@ public class HilosCalculador implements Runnable {
     }
 
 }
+/* Esto va en el main
+
+  HilosCalculador hCal[] = new HilosCalculador[5];
+        for (int i = 0; i < 5; i++) {
+          
+            hCal[i] = new HilosCalculador();
+            Thread hilo = new Thread(hCal[i]);
+            hilo.setName("Hilo "+i);
+            System.out.println("GetName: "+hilo.getName());
+            hilo.start();
+
+            if (i==0){
+                hilo.setPriority(Thread.MAX_PRIORITY);
+            }else hilo.setPriority(Thread.MIN_PRIORITY);
+            
+        } */

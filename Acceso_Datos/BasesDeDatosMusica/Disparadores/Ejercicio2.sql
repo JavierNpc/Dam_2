@@ -2,7 +2,7 @@
 
 
 CREATE CONSTRAINT Trigger artista_grupo
-AFTER INSERT on artista
+AFTER INSERT on PUBLIC.artista
 DEFERRABLE INITIALLY DEFERRED
 for EACH row EXECUTE FUNCTION fn_artista_grupo();
   
@@ -11,18 +11,26 @@ RETURNS TRIGGER
 LANGUAGE 'plpgsql'
 AS $$
 Begin 
-    if (SELECT count(cod) FROM pertence WHERE dni = (SELECT dni FROM artista WHERE dni = new.dni))<1 THEN
-        RAISE EXCEPTION 'no puede haber un artista sin grupo';
+    IF NOT EXISTS (SELECT dni FROM pertence WHERE dni = New.dni) THEN
+        RAISE EXCEPTION 'No puede haber un artista sin grupo';
+        RETURN NULL;
+    ELSE
+        RETURN NEW;
     end if;
-return NEW;
 End;
 $$;
 
 BEGIN;
-	INSERT into artista VALUES('1234567890','javier');
-	INSERT INTO pertence VALUE ('1234567890','3','flauta');
+    INSERT into artista VALUES('1234567890','javier');
+    INSERT INTO pertence VALUES('1234567890',3,'flauta');
 COMMIT;
 
-ALTER table pertence ADD constraint fk_artista Foreign Key (dni) REFERENCES artista(dni); 
-ALTER table pertence ADD constraint fk_grupo Foreign Key (cod) REFERENCES grupo(cod); 
 
+ROLLBACK;
+
+
+
+
+-- if NEW.dni not in (SELECT dni FROM pertecence) THEN ...
+
+-- if not exists (SELECT dni FROM pertecence WHERE NEW.dni = dni) THEN ...
