@@ -1,0 +1,7 @@
+
+
+function lanzarAlerta(){
+   alert("hey")
+  
+
+}
