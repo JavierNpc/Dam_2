@@ -11,34 +11,25 @@ public class App {
 
         for (int c=0 ; c<NUM_HILOS ; c++){
             p[c]= new Palillos();
+            p[c].setNum_palillo(c);
             palilloList.add(p[c]);
-            if(c==0){
-            
-            }else if (c==NUM_HILOS-1){
-                f[c] = new Filosofo(palilloList.get(c-1),palilloList.get(0));
-            }else{
-                f[c-1] = new Filosofo(palilloList.get(c-1),palilloList.get(c));
-            }
            
-            Thread hilo = new Thread(f[c]);
-            hilo.setName("Filosofo "+c+" ");
-            hilo.start();
-        }
         
+        }
+
         for (int c=0 ; c<NUM_HILOS ; c++){
-           
-            Thread hilo = new Thread(f[c]);
-            hilo.setName("Filosofo "+c+" ");
-            hilo.start();
+
+            if(c==NUM_HILOS-1){
+                f[c] = new Filosofo(palilloList.get(c),palilloList.get(0));
+                Thread hilo = new Thread(f[c]);
+                hilo.setName("Filosofo "+c);
+                hilo.start();
+            }else{
+                f[c] = new Filosofo(palilloList.get(c),palilloList.get(c+1));
+                Thread hilo = new Thread(f[c]);
+                hilo.setName("Filosofo "+c);
+                hilo.start();
+            }
         }
-      
-        
-
-        
-        
-        
-
-        
-    }
-
+    }      
 }

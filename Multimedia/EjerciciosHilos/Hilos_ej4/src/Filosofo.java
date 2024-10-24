@@ -1,9 +1,20 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/* 
+Filosofo 4 : 16
+Filosofo 2 : 14
+Filosofo 3 : 15
+Filosofo 1 : 13
+Filosofo 0 : 12 
+*/
+
+
 public class Filosofo implements Runnable {
-    public Palillos palillo_derecha;
-    public Palillos palillo_izquierda;
+    private Palillos palillo_derecha;
+    private Palillos palillo_izquierda;
+    
+    String miNombre;
 
 
     public Filosofo(Palillos palillo_derecha, Palillos palillo_izquierda) {
@@ -11,11 +22,39 @@ public class Filosofo implements Runnable {
         this.palillo_izquierda = palillo_izquierda;
     }
 
+    @Override
     public void run() {
-
-        String miNombre = Thread.currentThread().getName();
+        
+        int id = Integer.valueOf((int) Thread.currentThread().getId());
+        miNombre = Thread.currentThread().getName();
         Random generador = new Random();
+        System.out.println(miNombre+" : "+id);
+        
+
         while (true) {
+            switch (id) {
+                case 12:
+                    palillo_derecha.setActivo(false);
+                    palillo_izquierda.setActivo(false);
+                    break;
+                case 13:
+                    palillo_derecha.setActivo(false);
+                    palillo_izquierda.setActivo(false);
+                    break;
+                case 14:
+                    palillo_derecha.setActivo(false);
+                    palillo_izquierda.setActivo(false);
+                    break;
+                case 15:
+                    palillo_derecha.setActivo(false);
+                    palillo_izquierda.setActivo(false);
+                    break;
+                case 16:
+                    palillo_derecha.setActivo(false);
+                    palillo_izquierda.setActivo(false);
+                    break;
+            }
+        
             // Comer 
             // Intentar coger palillos
             System.out.println("\n"+miNombre + " comiendo...");
@@ -23,8 +62,9 @@ public class Filosofo implements Runnable {
             // Pensando... 
             // Recordemos soltar los palillos
             System.out.println("\n"+miNombre + " pensando...");
-            esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
-        } 
+            esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+        }   
+     
     }
 
     private synchronized void esperarTiempoAzar(String miNombre, int milisegs) {
@@ -41,8 +81,7 @@ public class Filosofo implements Runnable {
 
     @Override
     public String toString() {
-        return "Filosofo [palillo_derecha=" + palillo_derecha + ", palillo_izquierda=" + palillo_izquierda
-                + ", getClass()=" + getClass() + "]";
+        return miNombre+ " [p_der = " + palillo_derecha.getNum_palillo() + ",  p_izq = " + palillo_izquierda.getNum_palillo() +"]";
     }
 
 

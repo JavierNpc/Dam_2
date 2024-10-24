@@ -1,22 +1,24 @@
 public class Palillos  {
-    private boolean Activo = false;
-    private boolean no_activo = true;
-
+    private boolean activo = false;
+    private Integer num_palillo=0;
 
     public Palillos() {
-        
+       
     }
 
-    public void setActivo(boolean palillo_derecha) {
-        this.Activo = palillo_derecha;
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
-
-    public void setNo_activo(boolean palillo_izquierda) {
-        this.no_activo = palillo_izquierda;
+    public boolean isActivo() {
+        return activo;
+    }
+     public void setNum_palillo(Integer num_palillo) {
+         this.num_palillo = num_palillo;
+    }
+    public Integer getNum_palillo() {
+        return num_palillo;
     }
 
-    
-    
    
 }
