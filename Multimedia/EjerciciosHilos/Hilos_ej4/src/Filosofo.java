@@ -34,35 +34,64 @@ public class Filosofo implements Runnable {
         while (true) {
             switch (id) {
                 case 12:
-                    palillo_derecha.setActivo(false);
-                    palillo_izquierda.setActivo(false);
+                    if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
+                        System.out.println("\n"+miNombre + " comiendo...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
+                        palillo_derecha.setActivo(false);
+                        palillo_izquierda.setActivo(false);
+                        System.out.println("\n"+miNombre + " pensando...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+                    }
                     break;
                 case 13:
-                    palillo_derecha.setActivo(false);
-                    palillo_izquierda.setActivo(false);
+                    if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
+                        System.out.println("\n"+miNombre + " comiendo...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
+                        palillo_derecha.setActivo(false);
+                        palillo_izquierda.setActivo(false);
+                        System.out.println("\n"+miNombre + " pensando...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+                    }
                     break;
                 case 14:
-                    palillo_derecha.setActivo(false);
-                    palillo_izquierda.setActivo(false);
+                    if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
+                        System.out.println("\n"+miNombre + " comiendo...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
+                        palillo_derecha.setActivo(false);
+                        palillo_izquierda.setActivo(false);
+                        System.out.println("\n"+miNombre + " pensando...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+                    }
                     break;
                 case 15:
-                    palillo_derecha.setActivo(false);
-                    palillo_izquierda.setActivo(false);
+                    if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
+                        System.out.println("\n"+miNombre + " comiendo...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
+                        palillo_derecha.setActivo(false);
+                        palillo_izquierda.setActivo(false);
+                        System.out.println("\n"+miNombre + " pensando...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+                    }
                     break;
                 case 16:
-                    palillo_derecha.setActivo(false);
-                    palillo_izquierda.setActivo(false);
+                    if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
+                        System.out.println("\n"+miNombre + " comiendo...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
+                        palillo_derecha.setActivo(false);
+                        palillo_izquierda.setActivo(false);
+                        System.out.println("\n"+miNombre + " pensando...");
+                        esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+    
+                    }
                     break;
             }
         
-            // Comer 
-            // Intentar coger palillos
-            System.out.println("\n"+miNombre + " comiendo...");
-            esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
-            // Pensando... 
-            // Recordemos soltar los palillos
-            System.out.println("\n"+miNombre + " pensando...");
-            esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
+           
+
+            palillo_derecha.setActivo(true);
+            palillo_izquierda.setActivo(true);
+
+
         }   
      
     }
