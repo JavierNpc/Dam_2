@@ -54,26 +54,9 @@ for EACH row EXECUTE FUNCTION fn_no_borrado_chalet();
         INSERT INTO inmueble VALUES('123456789','calle 1',30);
 
 
---Borrado Chalet
-
-CREATE or REPLACE FUNCTION fn_no_borrado_casa()
-RETURNS TRIGGER
-LANGUAGE 'plpgsql'
-AS $$
-Begin 
-    RAISE NOTICE 'No puedes eliminar una casa';
-    RETURN null;
-End;
-$$;
-
-CREATE or REPLACE Trigger no_borrado_casa
-BEFORE DELETE on casa 
-for EACH row EXECUTE FUNCTION fn_no_borrado_casa();
-
-
 --Resriccion total de inmuebles
 
-CREATE or REPLACE FUNCTION fn_restriccion_total_casa()
+CREATE or REPLACE FUNCTION fn_restriccion_disjunta_casa()
 RETURNS TRIGGER
 LANGUAGE 'plpgsql'
 AS $$
@@ -86,12 +69,12 @@ Begin
 End;
 $$;
 
-CREATE or REPLACE Trigger restriccion_total_casa
+CREATE or REPLACE Trigger restriccion_disjunta_casa
 BEFORE INSERT or UPDATE on PUBLIC.casa
-for EACH row EXECUTE FUNCTION fn_restriccion_total_casa();
+for EACH row EXECUTE FUNCTION fn_restriccion_disjunta_casa();
 
 
-CREATE or REPLACE FUNCTION fn_restriccion_total_chalet()
+CREATE or REPLACE FUNCTION fn_restriccion_disjunta_chalet()
 RETURNS TRIGGER
 LANGUAGE 'plpgsql'
 AS $$
@@ -103,29 +86,11 @@ Begin
    RETURN new;
 End;
 $$;
-CREATE or REPLACE Trigger restriccion_total_chalet
+CREATE or REPLACE Trigger restriccion_disjunta_chalet
 BEFORE INSERT or UPDATE on PUBLIC.chalet
-for EACH row EXECUTE FUNCTION fn_restriccion_total_chalet();
+for EACH row EXECUTE FUNCTION fn_restriccion_disjunta_chalet();
 
 -- Restriccion de update
-
-
-CREATE or REPLACE FUNCTION fn_restriccion_total_chalet()
-RETURNS TRIGGER
-LANGUAGE 'plpgsql'
-AS $$
-Begin 
-   if EXISTS (SELECT id_inmueble from casa WHERE id_inmueble = new.id_inmueble) THEN
-        RAISE notice 'No se puede insertar en chalet porque ya exixte en casa';
-        RETURN NULL;
-   end if;
-   RETURN new;
-End;
-$$;
-CREATE or REPLACE Trigger restriccion_total_chalet
-BEFORE INSERT on PUBLIC.chalet
-for EACH row EXECUTE FUNCTION fn_restriccion_total_chalet();
-
 
 
 
