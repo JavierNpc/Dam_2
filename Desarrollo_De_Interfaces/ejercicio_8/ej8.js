@@ -1,9 +1,10 @@
-function cambiarImagen(){
-   document.getElementById("imagen1").src = 'asta2.jpg'
-   document.getElementById("imagen1").style = "max-width: 160px;"
+function valorVacio(){
+   //alert(document.getElementById("texto1").textContent)
+
+   if ( document.getElementById("texto1").value === "") {
+      alert("El camapo esta vacio")
+   }
+      
+
 }
 
-function cambiarImagen2(){
-   document.getElementById("imagen1").src = 'astas blclover.jpeg'
- 
-}
