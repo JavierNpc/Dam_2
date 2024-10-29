@@ -32,24 +32,7 @@ public class Filosofo implements Runnable {
         
 
         while (true) {
-            if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
-                palillo_derecha.setActivo(false);
-                palillo_izquierda.setActivo(false);
-                System.out.println("\n"+miNombre + " comiendo... Con los palillos: D = "+palillo_derecha.getNum_palillo()+" I = "+palillo_izquierda.getNum_palillo());
-                esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000);
-               
-            
-            }else{
-                palillo_derecha.setActivo(true);
-                palillo_izquierda.setActivo(true);
-                System.out.println("\n"+miNombre + " pensando...");
-                esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
-            }
-
-
-
-
-           /*  switch (id) {
+            switch (id) {
                 case 12:
                     if(palillo_derecha.isActivo() == true && palillo_izquierda.isActivo() == true ){
                         palillo_derecha.setActivo(false);
@@ -104,13 +87,13 @@ public class Filosofo implements Runnable {
             palillo_izquierda.setActivo(true);
             System.out.println("\n"+miNombre + " pensando...");
             esperarTiempoAzar(miNombre, (1 + generador.nextInt(5)) * 1000); 
-            */
-            }    
+           
+        }   
      
     }
 
     private synchronized void esperarTiempoAzar(String miNombre, int milisegs) {
-        System.out.println(" Va a esperar: "+milisegs/1000+" seg");
+        System.out.println(" Va ha esperar: "+milisegs/1000+" seg");
 
         try {
             Thread.sleep(milisegs);
