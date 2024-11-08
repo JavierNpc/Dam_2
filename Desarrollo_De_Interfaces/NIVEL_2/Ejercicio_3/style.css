@@ -1,0 +1,25 @@
+.aparecer{
+    animation: aparicion 2s forwards
+}
+
+.desaparecer{
+    animation: desvanecer 2s forwards;
+}
+
+@keyframes aparicion {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+
+}
+
+@keyframes desvanecer {
+    0%{
+        opacity: 1;
+    }100%{
+        opacity: 0;
+    }
+
+}
