@@ -5,11 +5,18 @@ function añadirElemento(){
    var texto = document.getElementById("caja").value
    nuevoElemento.textContent =  texto
    document.getElementById("lista").appendChild(nuevoElemento)
+   contarLineas()
    
+}
+
+function contarLineas(){
+   const numL = document.getElementById("lista").childElementCount
+   document.getElementById("lineas").innerHTML = "Nº de lineas = "+numL
 }
 
 function borrar(id){
    id.remove()
+   contarLineas()
 }
 
 function borrarAtributo(id){
@@ -36,5 +43,5 @@ function eliminarElemento(){
       nodeList[i].setAttribute( "onmousedown" , "borrar(this)");
       nodeList[i].setAttribute( "onmouseup" , "borrarAtributo(this)");
    }
-
+  
 }
