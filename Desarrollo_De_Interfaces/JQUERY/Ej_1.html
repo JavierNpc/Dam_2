@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Page Title</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+        <script src='jquery-3.7.1.min.js'></script>
+    </head>
+    <body>  
+        <h1><b>Peliculas</b></h1>
+        <ul>
+            <li>El Hobitt 
+                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <p> Puntuacion = <samp>0</samp> </p>
+            </li>
+            <li>El Hobitt 
+                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <p> Puntuacion = <samp> 0</samp> </p>
+            </li>
+            <li>El Hobitt 
+                 <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <p> Puntuacion = <samp> 0</samp> </p>
+            </li>
+            <li>El Hobitt 
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                <p> Puntuacion = 0 > </p>
+            </li>
+        </ul>
+
+        <script>
+
+            $(document).ready(function () {
+
+                $("span").click(function () {
+                    $(this).prevAll().addBack().css("color", "gold")
+                    $(this).nextAll().css("color", "black")
+                    $(this).siblings("p").text( "Puntuacion = "+ ($(this).index()+1))
+                });
+               
+                
+                
+            });
+
+        </script>
+
+    </body>
+</html>
+
+
+<!-- 
+★
+☆
+-->
