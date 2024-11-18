@@ -29,9 +29,10 @@ public class userController {
     public String mostrar(Map<String,Object> model){
        
       User user = new User("Mjose", "Martin");
-
+      user.setEmail("javmaccas@gmil.com");
         model.put("title", "hola mundo");
         model.put("user", user);
+
         
        
 
