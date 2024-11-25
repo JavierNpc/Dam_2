@@ -2,11 +2,12 @@ import java.util.concurrent.Semaphore;
 
 public class Proceso implements Runnable {
     private String name;
-    private int numero= 1;
+    private int numero;
     private Semaphore semaforo;
 
-    public Proceso(Semaphore semaforo) {
+    public Proceso(Integer numero ,Semaphore semaforo) {
         this.semaforo = semaforo;
+        this.numero = numero;
     }
 
 
@@ -22,12 +23,9 @@ public class Proceso implements Runnable {
             
             for(int i = 0 ; i<=al ; i++ ){
                 System.out.println(name+" :"+numero);
-                this.numero= numero +1;
+                numero= numero +1;
             }
             
-
-           
-
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         } finally {
