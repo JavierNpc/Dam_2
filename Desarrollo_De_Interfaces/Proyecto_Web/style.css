@@ -1,16 +1,30 @@
-*{
 
-    margin: 1px;
-    padding: 0px;
-    box-sizing: border-box;
-
-
-/*     border: 1px;
-    border-style: solid; */
+#collapsibleNavbar{
+    justify-content: left;
+    margin-left: 20px;
 }
-
+img{
+    border-radius: 15px;
+}
+.nav-item{
+    margin-inline: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.navbar-brand{
+    margin-left: 30px;
+}
 div{
-    border: 1px;
+     border: 1px;
     border-style: solid;
-    color: aliceblue;
+    border-color: rgba(240, 248, 255, 0.705);
+    
+}
+#Principal{
+    margin-top: 50px;
+    margin-inline: 100px;
+    border-radius: 10px;
+    background-color: rgb(70, 69, 69);
+    height: 700px;
+   
 }
