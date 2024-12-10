@@ -14,17 +14,26 @@ img{
 .navbar-brand{
     margin-left: 30px;
 }
-div{
-     border: 1px;
+/* div{
+    border: 1px;
     border-style: solid;
     border-color: rgba(240, 248, 255, 0.705);
     
-}
-#Principal{
+} */
+#carouselId{
     margin-top: 50px;
     margin-inline: 100px;
-    border-radius: 10px;
-    background-color: rgb(70, 69, 69);
-    height: 700px;
+    border-radius: 15px;
+    height: 550px;
+    width: 550px;
+
+    border: 3px;
+    border-style: solid;
+    border-color: rgba(240, 248, 255, 0.705);
    
 }
+
+
+
+
+
