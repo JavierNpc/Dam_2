@@ -24,11 +24,17 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link " href="Principal.html">Inicio</a>
+
+                    <li class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle mx-4" role="button" data-bs-toggle="dropdown">Inicio</a>
+                        <ul class="dropdown-menu bg-dark ">
+                          <li class="my-1"><a class="dropdown-item text-white bg-dark" href="/ventanas/Principal.html">Galeria</a></li>
+                          <li class="my-1"><a class="dropdown-item text-white bg-dark" href="/ventanas/Principal.html">Formulario</a></li>
+                          
+                        </ul>
                     </li>
                     <li class="nav-item rounded-3 border">
-                        <a class="nav-link" href="Biografia.html">Biografia</a>
+                        <a class="nav-link mx-4" href="Biografia.html">Biografia</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="Habilidades.html">Habilidades</a>
@@ -44,14 +50,14 @@
             <div class="h-100 p-5  text-white bg-dark border rounded-3 ">
                 <h2>Historia</h2>
                 <p class="text-justify">
-                    Se crentra en el obejetivo del
+                    Se centra en el obejetivo del
                     personaje Principal que combina elementos de humor,
                     misterio y acción, definido por su obsesión
                     con el concepto de ser "una eminencia en las sombras",
                     un ser poderoso que opera tras bambalinas.
                 </p>
                 <a class="btn btn-outline-primary" type="button"
-                    href="https://kage-no-jitsuryokusha-ni-naritakute-en-espanol.fandom.com/es/wiki/Shadow">
+                    href="https://the-eminence-in-shadow.fandom.com/wiki/Category:The_Eminence_in_Shadow">
                     Mas informacion
                 </a>
             </div>
@@ -62,9 +68,9 @@
                 <p>
                     Aqui tines un acceso rapido a una web para poder ver la serie
                 </p>
-                <button class="btn btn-outline-danger" type="button">
-                    Example button
-                </button>
+                <a class="btn btn-outline-danger mt-3" type="button" href="">
+                    Web Serie
+                </a>
             </div>
         </div>
 
@@ -76,8 +82,9 @@
                 <img class="card-img mt-3 rounded-4   " src="/imagenes/Shadow-LN-V1.png" alt="Card image"
                     style="width:100%">
                 <div class="card-body mb-2">
-                    <h4 class="card-title py-md-3">Shadow</h4>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal1">
+                    <h4 class="card-title py-md-2">Shadow</h4>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal"
+                        data-bs-target="#myModal1">
                         Ver mas ...
                     </button>
                 </div>
@@ -86,8 +93,9 @@
             <div class="card rounded-4 bg-dark text-white m-auto mb-4" style="width:300px">
                 <img class="card-img mt-3 rounded-4  " src="/imagenes/Alpha.jpeg" alt="Card image" style="width:100%">
                 <div class="card-body mb-2">
-                    <h4 class="card-title py-md-3">Alfa</h4>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">
+                    <h4 class="card-title py-md-2">Alfa</h4>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal"
+                        data-bs-target="#myModal2">
                         Ver mas ...
                     </button>
                 </div>
@@ -95,8 +103,9 @@
             <div class="card rounded-4 bg-dark text-white m-auto mb-4" style="width:300px">
                 <img class="card-img mt-3 rounded-4  " src="/imagenes/Beta.jpg" alt="Card image" style="width:100%">
                 <div class="card-body mb-2">
-                    <h4 class="card-title py-md-3">Beta</h4>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal3">
+                    <h4 class="card-title py-md-2">Beta</h4>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal"
+                        data-bs-target="#myModal3">
                         Ver mas ...
                     </button>
                 </div>
@@ -105,8 +114,9 @@
                 <img class="card-img mt-3 rounded-4  " src="/imagenes/Alexia Midgar.jpg" alt="Card image"
                     style="width:100%">
                 <div class="card-body mb-2">
-                    <h4 class="card-title py-md-3">Alexia Midgar</h4>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal4">
+                    <h4 class="card-title py-md-2">Alexia Midgar</h4>
+                    <button type="button" class="btn btn-outline-primary mt-2" data-bs-toggle="modal"
+                        data-bs-target="#myModal4">
                         Ver mas ...
                     </button>
                 </div>
@@ -114,7 +124,40 @@
 
 
         </div>
+
+        <h1 class="text-white p-md-3 mb-3">Serie</h1>
+
+
+        <!-- Table -->
+        <div class="table-responsive-md  mx-auto   ">
+            <table class="table table-dark table-secondary m-auto border border-black ">
+                <thead>
+                    <tr>
+                        <th scope="col">Temporadas</th>
+                        <th scope="col">Episodios</th>
+                        <th scope="col">valoracion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td scope="row">1</td>
+                        <td>20</td>
+                        <td>10/10</td>
+                    </tr>
+                    <tr class="">
+                        <td scope="row">2</td>
+                        <td>12</td>
+                        <td>9/10</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
     </div>
+
+
 
 
     <!-- Modal 1 -->
@@ -130,7 +173,8 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <img class="card-img mt-3 rounded-4 " src="/imagenes/Shadow-LN-V1.png" alt="Card image" style="width:100%">
+                    <img class="card-img mt-3 rounded-4 " src="/imagenes/Shadow-LN-V1.png" alt="Card image"
+                        style="width:100%">
                     <div class="card-body mb-2">
                         <h4 class="card-title mt-4 m-3">Shadow</h4>
                         <p class="card-text m-3">El que acecha en las sombras para cazar a las sombras</p>
@@ -139,6 +183,8 @@
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <a type="button" class="btn btn-primary "
+                        href="https://kage-no-jitsuryokusha-ni-naritakute-en-espanol.fandom.com/es/wiki/Shadow">More...</a>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
 
@@ -146,7 +192,7 @@
         </div>
     </div>
 
-    <!-- Modal 1 -->
+    <!-- Modal 2 -->
     <div class="modal fade  p-5" id="myModal2">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -159,11 +205,18 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Modal body..
+                    <img class="card-img mt-3 rounded-4 " src="/imagenes/Alpha.jpeg" alt="Card image"
+                        style="width:100%">
+                    <div class="card-body mb-2">
+                        <h4 class="card-title mt-4 m-3">Shadow</h4>
+                        <p class="card-text m-3">Fiel compañera de Shadow y la primera integrante de Shadow Garden</p>
+                    </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <a type="button" class="btn btn-primary "
+                        href="https://kage-no-jitsuryokusha-ni-naritakute-en-espanol.fandom.com/es/wiki/Alpha">More...</a>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
 
@@ -171,7 +224,7 @@
         </div>
     </div>
 
-    <!-- Modal 1 -->
+    <!-- Modal 3 -->
     <div class="modal fade  p-5" id="myModal3">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -184,11 +237,18 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Modal body..
+                    <img class="card-img mt-3 rounded-4 " src="/imagenes/Beta.jpg" alt="Card image" style="width:100%">
+                    <div class="card-body mb-2">
+                        <h4 class="card-title mt-4 m-3">Shadow</h4>
+                        <p class="card-text m-3">Gran pasión por su trabajo de escritora ademas de la obsesion que tiene
+                            con su lider Shadow</p>
+                    </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <a type="button" class="btn btn-primary "
+                        href="https://the-eminence-in-shadow.fandom.com/wiki/Beta">More...</a>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
 
@@ -196,7 +256,7 @@
         </div>
     </div>
 
-    <!-- Modal 1 -->
+    <!-- Modal 4 -->
     <div class="modal fade  p-5" id="myModal4">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -209,11 +269,19 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    Modal body..
+                    <img class="card-img mt-3 rounded-4 " src="/imagenes/Alexia Midgar.jpg" alt="Card image"
+                        style="width:100%">
+                    <div class="card-body mb-2">
+                        <h4 class="card-title mt-4 m-3">Shadow</h4>
+                        <p class="card-text m-3">Segunda Princesa de la capital y admiradora de Shadow. (Salió con el
+                            por un tiempo en su forma de Cid kagenou)</p>
+                    </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
+                    <a type="button" class="btn btn-primary "
+                        href="https://the-eminence-in-shadow.fandom.com/wiki/Alexia_Midgar">More...</a>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                 </div>
 
@@ -221,30 +289,6 @@
         </div>
     </div>
 
-    <!-- Modal 1 -->
-    <div class="modal fade  p-5" id="myModal5">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal Heading</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                    Modal body..
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
 
