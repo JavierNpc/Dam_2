@@ -17,7 +17,7 @@
 <body style="background-color: rgb(24, 1, 32);">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-            <img src="/imagenes/Garden.jpeg" alt="" width="60px" height="60px">
+            <img class="rounded-2" src="/imagenes/Garden.jpeg" alt="" width="60px" height="60px">
             <a class="navbar-brand"> Shadow Garden</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -39,23 +39,24 @@
     </nav>
 
 
-    <div class="row align-items-md-stretch p-5">
-        <div class="col-md-8 ">
+    <div class="row align-items-md-stretch p-5 ">
+        <div class="col-md-8 mb-4">
             <div class="h-100 p-5  text-white bg-dark border rounded-3 ">
                 <h2>Historia</h2>
                 <p class="text-justify">
                     Se crentra en el obejetivo del
                     personaje Principal que combina elementos de humor,
                     misterio y acción, definido por su obsesión
-                    con el concepto de ser "una eminencia en las sombras", 
+                    con el concepto de ser "una eminencia en las sombras",
                     un ser poderoso que opera tras bambalinas.
                 </p>
-                <a class="btn btn-outline-primary" type="button"  href="https://kage-no-jitsuryokusha-ni-naritakute-en-espanol.fandom.com/es/wiki/Shadow">
+                <a class="btn btn-outline-primary" type="button"
+                    href="https://kage-no-jitsuryokusha-ni-naritakute-en-espanol.fandom.com/es/wiki/Shadow">
                     Mas informacion
                 </a>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mb-4">
             <div class="h-100 p-5 bg-dark text-white border rounded-3">
                 <h2>Ver Serie</h2>
                 <p>
@@ -67,49 +68,182 @@
             </div>
         </div>
 
-        <h1 class="text-white p-5">Personajes</h1>
+        <h1 class="text-white p-md-3 mb-3">Personajes</h1>
 
         <div class="row">
-            
-            <div class="card rounded-4 bg-dark text-white mx-auto mb-4" style="width:300px">
-                <img class="card-img mt-3 rounded-4 border " src="/imagenes/Shadow-LN-V1.png" alt="Card image" style="width:100%">
+
+            <div class="card rounded-4 bg-dark text-white m-auto mb-4" style="width:300px">
+                <img class="card-img mt-3 rounded-4   " src="/imagenes/Shadow-LN-V1.png" alt="Card image"
+                    style="width:100%">
                 <div class="card-body mb-2">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title py-md-3">Shadow</h4>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal1">
+                        Ver mas ...
+                    </button>
                 </div>
             </div>
 
-            <div class="card rounded-4 bg-dark text-white mx-auto" style="width:300px">
-                <img class="card-img mt-3 rounded-4 border " src="/imagenes/Shadow-LN-V1.png" alt="Card image" style="width:100%">
+            <div class="card rounded-4 bg-dark text-white m-auto mb-4" style="width:300px">
+                <img class="card-img mt-3 rounded-4  " src="/imagenes/Alpha.jpeg" alt="Card image" style="width:100%">
                 <div class="card-body mb-2">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title py-md-3">Alfa</h4>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">
+                        Ver mas ...
+                    </button>
                 </div>
             </div>
-            <div class="card rounded-4 bg-dark text-white mx-auto" style="width:300px">
-                <img class="card-img mt-3 rounded-4 border " src="/imagenes/Shadow-LN-V1.png" alt="Card image" style="width:100%">
+            <div class="card rounded-4 bg-dark text-white m-auto mb-4" style="width:300px">
+                <img class="card-img mt-3 rounded-4  " src="/imagenes/Beta.jpg" alt="Card image" style="width:100%">
                 <div class="card-body mb-2">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title py-md-3">Beta</h4>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal3">
+                        Ver mas ...
+                    </button>
                 </div>
             </div>
-            <div class="card rounded-4 bg-dark text-white mx-auto" style="width:300px">
-                <img class="card-img mt-3 rounded-4 border " src="/imagenes/Shadow-LN-V1.png" alt="Card image" style="width:100%">
+            <div class="card rounded-4 bg-dark text-white m-auto mb-4" style="width:300px">
+                <img class="card-img mt-3 rounded-4  " src="/imagenes/Alexia Midgar.jpg" alt="Card image"
+                    style="width:100%">
                 <div class="card-body mb-2">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title py-md-3">Alexia Midgar</h4>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal4">
+                        Ver mas ...
+                    </button>
                 </div>
             </div>
 
 
         </div>
-       
+    </div>
 
 
+    <!-- Modal 1 -->
+    <div class="modal fade p-5 " id="myModal1">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <img class="card-img mt-3 rounded-4 " src="/imagenes/Shadow-LN-V1.png" alt="Card image" style="width:100%">
+                    <div class="card-body mb-2">
+                        <h4 class="card-title mt-4 m-3">Shadow</h4>
+                        <p class="card-text m-3">El que acecha en las sombras para cazar a las sombras</p>
+                    </div>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div class="modal fade  p-5" id="myModal2">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div class="modal fade  p-5" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div class="modal fade  p-5" id="myModal4">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1 -->
+    <div class="modal fade  p-5" id="myModal5">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body..
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
     </div>
 
 
