@@ -65,16 +65,13 @@ public class Cliente implements Runnable {
 					
 			
 				// ----------------------------------------------
-
-				
-
-			
-
-				
 				
 
 			} while (!recibido.equalsIgnoreCase("Exit"));
 
+			sc.close();
+			in.close();
+			out.close();
 			
 
 		} catch (IOException e) {

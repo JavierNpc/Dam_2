@@ -118,14 +118,13 @@ class Servidor implements Runnable {
 
                             String factorizado = factorizacionPrima(mensajeInt);
 
-                            MensajeServidor("Cobversion completada, numero"+ mensajeInt+" Factorizado es = "+ factorizado); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Cobversion completada, numero "+ mensajeInt+" Factorizado es = "+ factorizado); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
                             MensajeServidor("Enviando resualtado al Clinete...\n"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
 
                             out.writeUTF("\nEl numero " + mensajeInt + " factorizado es = " + factorizado);
                             break;
                         case "Exit":
                             out.writeUTF("Exit");
-                            client.close();
                             condition = false;
                             break;
                         default:
@@ -135,6 +134,9 @@ class Servidor implements Runnable {
                 } while (condition != false);
 
                 System.out.println("Cliente Desconectado");
+                client.close();
+                out.close();
+                in.close();
 
             } catch (IOException e) {
                 System.out.println("ERROR: Failed connecting to client");
