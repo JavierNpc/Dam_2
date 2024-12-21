@@ -28,46 +28,57 @@ public class Cliente implements Runnable {
 
 		try {
 			Scanner sc = new Scanner(System.in);
-
-
+			boolean cond1 = true;
+			boolean cond2 = true;
+		
 			connect();
 			in = new DataInputStream(servidor.getInputStream());
 			out = new DataOutputStream(servidor.getOutputStream());
 
-	
+			
 			do {
+
+				
+				
 				// .. Respuesta del servidor ....................
 				recibido = in.readUTF();
-				if (recibido.equalsIgnoreCase("Exit")) {
-				}else{
+				if (!recibido.equalsIgnoreCase("Exit")) {
 					System.out.println(recibido);
 				}
 				// ..............................................
+				
+				
 
 				// .. Respuesta del servidor ....................
 				recibido = in.readUTF();
-				if (recibido.equalsIgnoreCase("Exit")) {
-				}else{
+				if (!recibido.equalsIgnoreCase("Exit")) {
 					System.out.println(recibido);
 				}
 				// ..............................................
+				
 				
 			
 				// -- Mensaje al Cliente ------------------------
 				
 					System.out.print("  ->  ");
 					out.writeUTF(enviar = sc.nextLine());
+					
 			
+				// ----------------------------------------------
+
 				
 
-				// ----------------------------------------------
+			
+
+				
+				
 
 			} while (!recibido.equalsIgnoreCase("Exit"));
 
 			
 
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("\nEl cliente se ha desconectado\n ");
 		}
 
 	}
@@ -82,5 +93,10 @@ public class Cliente implements Runnable {
 			return false;
 		}
 	}
+
+	public static void limpiarConsola() {  
+		System.out.print("\033[H\033[2J");  
+		System.out.flush();  
+	} 
 
 }

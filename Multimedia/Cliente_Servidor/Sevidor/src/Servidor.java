@@ -1,7 +1,7 @@
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
+
 
 class Servidor implements Runnable {
     private ServerSocket server = null;
@@ -40,40 +40,87 @@ class Servidor implements Runnable {
                 boolean condition = true;
 
                 // . Se incia la conversacion
-                out.writeUTF("\n--- Conexion con servidor realizada ---");
+                out.writeUTF("\n--- Conexion con servidor realizada con el "+Thread.currentThread().getName()+" ---");
+        
                 do {
 
                     mensaje = pedirDatos(); // - Se queda esperando al mensaje del cliente [2]
                     switch (mensaje) {
                         case "/a":
-                            out.writeUTF("1º Metodo escogido -> Contador de palabras de un texto");
+                            out.writeUTF("1º Metodo escogido -> Contador de palabras de un texto"); 
+
+                            MensajeServidor("\nMetodo 1º escogido"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             mensaje = pedirDatosString();
+
+                            MensajeServidor("Mesaje recibido = "+ mensaje);  //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Conatando palabras..."); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             Integer numPalabras = contarTexto(mensaje);
-                            out.writeUTF("\nEl texto tine = " + numPalabras);
+
+                            MensajeServidor("Palabras contadas = "+ numPalabras); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Enviando mensaje al Cliente...\n"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
+                            out.writeUTF("\nEl texto tiene = " + numPalabras +" palabras");
                             break;
                         case "/b":
                             out.writeUTF("2º Metodo escogido -> Conversion De Entero a Binario");
+
+                            MensajeServidor("\nMetodo 2º escogido"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             mensajeInt = pedirDatosInt();
+
+                            MensajeServidor("Mesaje recibido = "+ mensajeInt);  //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Convietiendo "+ mensajeInt +" a binario"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             String numero = binario(mensajeInt);
+
+                            MensajeServidor("Conversion completada, numero"+ mensajeInt+" en binario es = "+ numero); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Enviando resualtado al Clinete...\n"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             out.writeUTF("\nEl numero " + mensajeInt + " en binario es = " + numero);
 
                             break;
                         case "/c":
                             out.writeUTF("\n3º Metodo para Generar una Contraseña de una longitud especifica");
+
+                            MensajeServidor("\nMetodo 3º escogido"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             mensajeInt = pedirDatosInt();
+
+                            MensajeServidor("Mesaje recibido = "+ mensajeInt); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Genarando contraseña..."); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
+
                             String contraseña = generarContraseña(mensajeInt);
-                            
+
+                           
                             if (mensajeInt < 5) {
+                                MensajeServidor("Contraseña imposible de generar, condicion de min 5 digitos no cumplida "); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
                                 out.writeUTF("\nLa contraseña debe tener mas de 5 digitos");
                             }else{
+                                MensajeServidor("Contraseña genreada = "+ contraseña); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                                MensajeServidor("Enviando resualtado al Clinete...\n"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
                                 out.writeUTF("\nLa contraseña es = " + contraseña);
                             }
 
                             break;
                         case "/d":
                             out.writeUTF("4º Metodo escogido -> Factorizacion Prima De Entero ");
+
+                            MensajeServidor("Metodo 4º escogido"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
+
                             mensajeInt = pedirDatosInt();
+
+                            MensajeServidor("Mesaje recibido = "+ mensajeInt); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Genarando Factorial Primo ..."); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             String factorizado = factorizacionPrima(mensajeInt);
+
+                            MensajeServidor("Cobversion completada, numero"+ mensajeInt+" Factorizado es = "+ factorizado); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+                            MensajeServidor("Enviando resualtado al Clinete...\n"); //· Este mesaje se muestra en el Servidor para tener claro que hace el cliente
+
                             out.writeUTF("\nEl numero " + mensajeInt + " factorizado es = " + factorizado);
                             break;
                         case "Exit":
@@ -95,6 +142,10 @@ class Servidor implements Runnable {
             }
         }
     }
+    
+    public static void MensajeServidor(String mensaje){
+        System.out.println(mensaje);
+    }
 
     public String pedirDatos() {
         try {
@@ -114,7 +165,7 @@ class Servidor implements Runnable {
         try {
             DataOutputStream out = new DataOutputStream(client.getOutputStream());
             DataInputStream in = new DataInputStream(client.getInputStream());
-            out.writeUTF("\nDame un texto"); // . Mensaje al Cliente
+            out.writeUTF("Dame un texto"); // . Mensaje al Cliente
 
             return in.readUTF(); // - Se queda esperando al mensaje del cliente
 

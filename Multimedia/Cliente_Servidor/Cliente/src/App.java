@@ -1,7 +1,7 @@
 public class App {
 
 	private static final int port = 5000;
-	private static final String host = "192.168.116.1";
+	private static final String host = "localhost";
 
 	public static void main(String[] args) {
 
