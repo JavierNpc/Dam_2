@@ -126,13 +126,13 @@ public class ServidorConexion implements Runnable {
             out.close();
             in.close();
             client.close();
-           
-
-        } catch (IOException e) {
-            System.out.println("ERROR: Failed connecting to client");
-            
           
+
+        } catch (IOException e) { 
+            System.out.println("ERROR: Failed connecting to client");
+            System.out.println("Cliente Desconectado");
         }
+        
 
     }
     

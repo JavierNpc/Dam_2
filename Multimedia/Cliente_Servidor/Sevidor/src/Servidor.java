@@ -20,12 +20,12 @@ class Servidor {
             
             while (true) {
                 cont++;
-                System.out.println("\nEsperando a cliente");
+                System.out.println("\nEsperando a cliente...");
                 Socket conexion = server.accept(); //. Espera a una conexion
-                System.out.println("Conexion recibida");
+                System.out.println("\nConexion recibida");
                 ServidorConexion s = new ServidorConexion(conexion);
                 Thread hilo = new Thread(s);
-                hilo.setName("Servdor "+cont);
+                hilo.setName("Servidor "+cont);
                 hilo.start();
                 
             }
@@ -33,7 +33,6 @@ class Servidor {
 
         } catch (IOException e) {
             System.out.println("ERROR: Unable to open socket on TCP " + port);
-            return;
         }
 
         
