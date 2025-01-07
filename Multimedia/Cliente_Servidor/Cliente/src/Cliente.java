@@ -39,7 +39,6 @@ public class Cliente implements Runnable {
 			do {
 
 				
-				
 				// .. Respuesta del servidor ....................
 				recibido = in.readUTF();
 				if (!recibido.equalsIgnoreCase("Exit")) {
