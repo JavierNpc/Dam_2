@@ -161,6 +161,6 @@ SELECT DISTINCT e1.nomeq FROM equipo e1 , ciclista c1 WHERE dorsal in ((SELECT d
 --29 Obtener el código y el color de aquellos maillots que sólo han sido llevados por ciclistas de un mismo equipo.
 
 SELECT DISTINCT m1.codigo, color from maillot m1 WHERE EXISTS (SELECT DISTINCT e1.nomeq, nombre from equipo e1, ciclista c1 ,llevar l1 , maillot WHERE m1.color = maillot.color )
-)
+
 
 SELECT DISTINCT e1.nomeq, nombre from equipo e1, ciclista c1 WHERE e1.nomeq=c1.nomeq and e1.nomeq = (SELECT nomeq FROM ciclista WHERE c1.nombre = ciclista.nombre)
