@@ -106,7 +106,10 @@ export class HousingService {
       wifi: true,
       laundry: true,
     },
+   
   ];
+  
+  
   getAllHousingLocations(): HousingLocation[] {
     return this.housingLocationList;
   }
@@ -117,5 +120,8 @@ export class HousingService {
     console.log(
       `Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`,
     );
+  }
+  addHouse(){
+   this.housingLocationList
   }
 }
