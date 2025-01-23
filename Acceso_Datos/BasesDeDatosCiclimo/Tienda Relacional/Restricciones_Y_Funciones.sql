@@ -2,38 +2,19 @@
 
 --- Restriccion 0 ---
 
-CREATE OR REPLACE FUNCTION restriccion_precio_update_fnc()
+CREATE OR REPLACE FUNCTION restriccion_piezas_max_insert_fnc()
 RETURNS TRIGGER
 LANGUAGE 'plpgsql'
 as $body$
+DECLARE
+ consulta INT;
 BEGIN
 
-    if (new.precio < 3) THEN
-        Raise NOTICE 'El precio no pude ser menor a 3€ ';
-        RETURN NULL;
-    END if;
+   SELECT count(*) into consulta from piezas_componentes WHERE NEW.c_nombre_producto = c_nombre_producto;
 
-    RETURN NEW;
-End;
-$body$;
-
-
-CREATE or REPLACE TRIGGER restriccion_precio_update
-BEFORE UPDATE on PUBLIC.productos
-for EACH row EXECUTE FUNCTION restriccion_precio_update_fnc();
-
---* ------------------------------------------
-
-CREATE OR REPLACE FUNCTION restriccion_precio_insert_fnc()
-RETURNS TRIGGER
-LANGUAGE 'plpgsql'
-as $body$
-BEGIN
-
-    if (new.precio < 3) THEN
-        Raise NOTICE 'El precio no pude ser menor a 3€ ';
-        RETURN NULL;
-    END if;
+    if(consulta >= 4 ) THEN
+        RAISE EXCEPTION 'Un componente no puede tener mas de 4 piezas';
+    End if;
 
     RETURN NEW;
 End;
@@ -41,27 +22,36 @@ $body$;
 
 
 CREATE or REPLACE TRIGGER restriccion_precio_insert
-BEFORE INSERT on PUBLIC.productos
-for EACH row EXECUTE FUNCTION restriccion_precio_insert_fnc();
+BEFORE INSERT on PUBLIC.piezas_componentes
+for EACH row EXECUTE FUNCTION restriccion_piezas_max_insert_fnc();
 
---- Restriccion 2 ----
+--* ---------------------
 
-CREATE OR REPLACE FUNCTION restriccion_piezas_min_insert_fnc()
+
+CREATE OR REPLACE FUNCTION restriccion_piezas_fnc()
 RETURNS TRIGGER
 LANGUAGE 'plpgsql'
 as $body$
+DECLARE
+ consulta INT;
 BEGIN
 
-    if (new.precio < 3) THEN
-        Raise NOTICE 'El precio no pude ser menor a 3€ ';
-        RETURN NULL;
-    END if;
+   SELECT count(*) into consulta from piezas_componentes WHERE NEW.c_nombre_producto = c_nombre_producto;
+
+    if(consulta >= 4 ) THEN
+        RAISE EXCEPTION 'Un componente no puede tener mas de 4 piezas';
+    End if;
 
     RETURN NEW;
 End;
 $body$;
 
 
-CREATE or REPLACE TRIGGER restriccion_precio_insert
-BEFORE INSERT on PUBLIC.productos
-for EACH row EXECUTE FUNCTION restriccion_precio_insert_fnc();
+CREATE TRIGGER restriccion_piezas_fnc
+AFTER INSERT on PUBLIC.piezas
+DEFERRABLE DEFERRED
+for EACH row EXECUTE FUNCTION restriccion_piezas_fnc();
+
+
+--- Restriccion 1 --- Total y Disjunta
+

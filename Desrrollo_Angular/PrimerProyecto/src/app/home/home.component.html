@@ -4,6 +4,12 @@
     <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
   </form>
 </section>
+<section>
+  <section style="margin: 20px;">
+    <button class="primary" type="button" > Add House</button>
+  </section>
+  
+</section>
 <section class="results">
   <app-housing-location
     *ngFor="let housingLocation of filteredLocationList"
