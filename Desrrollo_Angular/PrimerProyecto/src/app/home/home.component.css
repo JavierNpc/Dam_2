@@ -14,7 +14,7 @@
     display: inline-block;
     width: 30%;
   }
-  button {
+  button, a {
     padding: 10px;
     border: solid 1px var(--primary-color);
     background: var(--primary-color);

@@ -121,7 +121,26 @@ export class HousingService {
       `Homes application received: firstName: ${firstName}, lastName: ${lastName}, email: ${email}.`,
     );
   }
-  addHouse(){
-   this.housingLocationList
+  addHouse( id: number,
+    name: string,
+    city: string,
+    state: string,
+    photo: string,
+    availableUnits: number,
+    wifi: boolean,
+    laundry: boolean
+  ){
+   this.housingLocationList.push(
+    {
+      id: id,
+      name: name,
+      city: city,
+      state: state,
+      photo: photo,
+      availableUnits: availableUnits ,
+      wifi: wifi,
+      laundry: laundry,
+    },
+   )
   }
 }
