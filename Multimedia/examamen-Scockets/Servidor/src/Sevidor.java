@@ -64,7 +64,7 @@ public class Sevidor implements Runnable {
                         break;
                 }
     
-            } while (condition = true);
+            } while (condition == true);
         } catch (IOException e) {
             System.out.println("erroror");
             e.printStackTrace();
