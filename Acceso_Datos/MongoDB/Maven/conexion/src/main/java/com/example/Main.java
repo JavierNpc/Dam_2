@@ -16,7 +16,7 @@ public class Main  {
 
         postgres.Sentencia_Select("Select * from maillot"); */
 
-        ConexionMongo mongo = new ConexionMongo(27017, "localhost", "basedatos1" );
+        ConexionMongo mongo = new ConexionMongo("mati","mati", "localhost", 27017, "basedatos1" );
 
         mongo.Conectar_Con_BBDD();
 
