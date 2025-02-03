@@ -19,6 +19,7 @@ public class Main  {
         ConexionMongo mongo = new ConexionMongo("mati","mati", "localhost", 27017, "basedatos1" );
 
         mongo.Conectar_Con_BBDD();
+        
 
     }
 }
