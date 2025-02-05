@@ -7,9 +7,12 @@ public class Main {
 
         mongo.Conectar_Con_BBDD();
 
-        mongo.Conectar_Collection("Contratos");
+        mongo.insertar_Collecion("Enero",100);
 
-        
+       // mongo.eliminar_Collecion("Enero");
+       
+       mongo.Desconectar();
+
         
 
 
