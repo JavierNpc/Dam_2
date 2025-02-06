@@ -1,0 +1,22 @@
+.navbar{
+    background: rgba(0, 0, 0, 0.3); /* Transparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    padding: 10px;
+    
+}
+span{
+    padding-top: 13px;
+}
+.navbar a {
+    color:rgb(0, 0, 0); 
+    font-size: 20px;
+    text-decoration: none;
+    padding: 15px 15px;
+    border-radius: 30px;
+    pointer-events: fill;
+    cursor: pointer;
+}
+.navbar a:hover {
+    background-color: #450f8d;
+    color: white;
+}

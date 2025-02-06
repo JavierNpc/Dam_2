@@ -1,10 +1,8 @@
 nav {
-    
     padding: 15px 50px;
     background: rgba(0, 0, 0, 0.3); /* Transparente */
     backdrop-filter: blur(10px); /* Efecto de desenfoque */
-    border-radius: 10px;
-  
+
 }
 
 .logo {
@@ -15,27 +13,28 @@ nav {
 
 /* Estilos del menú */
 .navbar-nav {
-    padding-right: 20px;
+   
+    padding: 10px;
     list-style: none;
     display: flex;
-    gap: 40px;
+    gap: 30px;
+   
 }
 
-
-
 .nav-item a {
+    margin-inline: 10px;
+    padding: 10px;
     text-decoration: none;
     color: white;
     font-size: 18px;
     transition: 0.3s;
+   
 }
 
 .nav-item a:hover {
-    color: #ff0000; /* Amarillo dorado */
+    color: #ff0000; 
+
 }
-
-
-
 
 /* Botón */
 button {
