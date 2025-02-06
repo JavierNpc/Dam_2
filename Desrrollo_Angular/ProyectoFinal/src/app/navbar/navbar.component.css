@@ -1,0 +1,54 @@
+nav {
+    
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.3); /* Transparente */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+    border-radius: 10px;
+  
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Estilos del menú */
+.navbar-nav {
+    padding-right: 20px;
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+
+
+
+.nav-item a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav-item a:hover {
+    color: #ff0000; /* Amarillo dorado */
+}
+
+
+
+
+/* Botón */
+button {
+    background: #bb0808;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #300505;
+}

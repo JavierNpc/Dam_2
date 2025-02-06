@@ -9,10 +9,7 @@ export const routes: Routes = [
         component: HomeComponent,
         title: 'Home page',
     },
-    /* {
-        path: '/nav',
-        component: NavbarComponent,
-        title: 'navBar',
-    }, */
+   
+    
 
 ];

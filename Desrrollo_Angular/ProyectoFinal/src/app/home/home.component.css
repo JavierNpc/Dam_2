@@ -1,24 +1,19 @@
-* {
-         
-    font-family: Arial, sans-serif;
-}
-
-
 .container{
-    background-color: #86b4b2;
-    padding: 20px;
-    border-radius: 10px;
-}
 
+    padding: 20px;
+
+}
 
 .principal {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
-
+    border-style: solid;
     text-align: center;
     margin: auto;
     max-width: 75%;
+    min-height: 100vh;
+    
 }
 h1 {
     color: #333;

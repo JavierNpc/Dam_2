@@ -1,5 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
-body {
-  background: linear-gradient(to right, #f71717, #9d11af);
+
+* {  
+  font-family: Arial, sans-serif;
 }
 
+body {
+  background: linear-gradient(to right, #f71717, #9d11af);
+
+}
+
+section{
+  position: relative;
+  padding: 5px;
+  max-height: max-content;
+}
