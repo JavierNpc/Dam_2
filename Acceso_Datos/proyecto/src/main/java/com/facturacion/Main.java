@@ -10,6 +10,8 @@ public class Main {
         mongo.insertar_Collecion("Enero",100);
 
        // mongo.eliminar_Collecion("Enero");
+
+       mongo.bucar_contrato_coleccion("Enero", 1);
        
        mongo.Desconectar();
 
