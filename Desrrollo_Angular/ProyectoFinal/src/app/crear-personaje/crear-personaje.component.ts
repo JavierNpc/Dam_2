@@ -15,6 +15,8 @@ import { DataService } from '../data.service';
 })
 export class CrearPersonajeComponent implements OnInit {
 
+  
+
   conditionExpression: any;
 
   constructor(private dataService:DataService){}

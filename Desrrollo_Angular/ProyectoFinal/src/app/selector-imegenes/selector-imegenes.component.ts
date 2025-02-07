@@ -21,4 +21,6 @@ export class SelectorImegenesComponent {
     this.imagenSeleccionada = id; // Guarda la imagen seleccionada
     console.log('Imagen seleccionada:', id); // Puedes enviar este string donde lo necesites
   }
+
+  
 }
