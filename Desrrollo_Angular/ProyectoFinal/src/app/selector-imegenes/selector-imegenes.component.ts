@@ -10,8 +10,8 @@ import { Component } from '@angular/core';
 export class SelectorImegenesComponent {
   imagenes = [
     { id: 'espadachin1', src: 'imagenes/razaElfo.png' },
-    { id: 'espadachin2', src: 'imagenes/razaElfo.png' },
-    { id: 'espadachin3', src: 'imagenes/razaElfo.png' },
+    { id: 'espadachin2', src: 'imagenes/razaEnano.jpg' },
+    { id: 'espadachin3', src: 'imagenes/razaOrco.png' },
     { id: 'espadachin4', src: 'imagenes/razaElfo.png' }
   ];
 

@@ -1,0 +1,10 @@
+.seleccionada img{
+    border: 5px;
+    border-style: solid;
+}
+
+img:hover{
+    border: 5px;
+    border-style: solid;
+
+}
