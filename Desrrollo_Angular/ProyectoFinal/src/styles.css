@@ -9,3 +9,8 @@ body {
 
 }
 
+.container-personaje{
+  text-align: center;  
+  background: rgba(0, 0, 0, 0.3); /* Transparente */
+  backdrop-filter: blur(10px); /* Efecto de desenfoque */
+}
