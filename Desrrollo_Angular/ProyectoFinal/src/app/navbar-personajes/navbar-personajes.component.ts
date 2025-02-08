@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 
 @Component({
@@ -8,21 +8,34 @@ import { DataService } from '../data.service';
   templateUrl: './navbar-personajes.component.html',
   styleUrl: './navbar-personajes.component.css'
 })
-export class NavbarPersonajesComponent {
+export class NavbarPersonajesComponent implements OnInit {
 
+  botonSeleccionado:any
   //  Constructor
-  constructor(private dataService:DataService){}
+  constructor(private dataService:DataService){ }
+
 
   botones: string[] = ['raza', 'estadisticas', 'habilidades', 'nombre'];
-  botonSeleccionado: string = 'raza';
-
-
+ 
 
   guardarNombre(nombre: string) {
     this.botonSeleccionado = nombre;
     this.dataService.ActualizarMensajePersonaje(nombre)
     console.log('Botón clicado:', nombre);
   }
+
+  ActualizarNombre(nombre:string) {
+    this.botonSeleccionado = nombre
+  }
+
+  ngOnInit() {
+    this.dataService.botonSeleccionado$.subscribe(valor => {
+      this.botonSeleccionado = valor
+    })
+    console.log(this.botonSeleccionado)
+  }
+
+
 
   
   

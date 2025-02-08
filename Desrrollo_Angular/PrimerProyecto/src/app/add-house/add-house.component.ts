@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {HousingLocation} from '../housinglocation';
 import {RouterModule} from '@angular/router';
 import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
-import { HousingService } from '../housing.service';
+import {HousingService } from '../housing.service';
 
 @Component({
   selector: 'app-add-house',
@@ -46,6 +46,7 @@ import { HousingService } from '../housing.service';
 export class AddHouseComponent {
     housingService = inject(HousingService);
     housingLocation: HousingLocation | undefined;
+    
     applyForm = new FormGroup({
       name:  new FormControl(''),
       city:  new FormControl(''),

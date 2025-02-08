@@ -1,0 +1,37 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: xx-large;
+ 
+
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 4px solid #8d19bb;
+    text-align: center;
+    font-size: xx-large;
+}
+
+
+button {
+    background: #5a0c94;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #4b0a7f;
+}

@@ -1,0 +1,54 @@
+<section>
+        
+    <h2 class="h1 mb-5 fw-bold">Resumen Personaje</h2>
+
+    <section class="mx-1 d-flex  justify-content-end">
+
+        <div class="w-50  ">
+            <div class=" w-100 pb-5 mb-5 pt-5 cont rounded-4 ">
+                <h1 class="fw-bold ">Personal</h1>
+                <div class="w-100  ">
+                    <label id="vit">Nombre:</label>
+                    <p id="vit"></p> 
+                </div>
+                <div class="w-100 ">
+                    <label id="vit">Edad:</label>
+                    <p id="vit"></p> 
+                </div>
+            </div>
+        
+            <div class="w-100 pb-5  pt-5 cont rounded-4"> 
+                <h1 class="fw-bold mb-5">Raza</h1>
+                <div class=" w-100 mb-5 pt-4 ">
+                    <p id="vit">{{raza}}</p> 
+                </div>
+            </div>
+        
+        </div>
+    
+        <div class="w-50 mx-4  pt-5 cont  rounded-4  ">
+            <h1 class="h1 fw-bold ">Estadisticas</h1>
+
+            <label id="vit">Vitalidad:</label>
+            <p id="vit"></p> 
+
+            <label id="str">Fuerza:</label>
+            <p id="str" > </p>
+        
+            <label id="des">Destreza:</label>
+            <p id="des" > </p>
+        
+            <label id="res">Resistencia:</label>
+            <p id="res" > </p>
+        
+            <label id="arc">Arcano:</label>
+            <p id="arc" > </p>
+
+           
+        </div>
+        
+    </section>
+
+    <button class="mt-5 mx-5 p-4 w-25" (click)="volver()"> Volver </button>
+    <button class="mt-5 mx-5 p-4 w-25" (click)="CrearPersonaje()"> Crear Personaje</button>
+</section>

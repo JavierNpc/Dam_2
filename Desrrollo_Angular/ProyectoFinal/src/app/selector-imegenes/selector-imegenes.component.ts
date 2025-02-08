@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { DataService } from '../data.service';
+import { NavbarPersonajesComponent } from '../navbar-personajes/navbar-personajes.component';
+
+
 
 @Component({
   selector: 'app-selector-imegenes',
@@ -7,20 +12,38 @@ import { Component } from '@angular/core';
   templateUrl: './selector-imegenes.component.html',
   styleUrl: './selector-imegenes.component.css'
 })
-export class SelectorImegenesComponent {
+export class SelectorImegenesComponent implements OnInit {
+
+  constructor(private dataService:DataService){}
+
+  raza!: string  
+
   imagenes = [
-    { id: 'espadachin1', src: 'imagenes/razaElfo.png' },
-    { id: 'espadachin2', src: 'imagenes/razaEnano.jpg' },
-    { id: 'espadachin3', src: 'imagenes/razaOrco.png' },
-    { id: 'espadachin4', src: 'imagenes/razaElfo.png' }
+    { id: 'Elfo', src: 'imagenes/razaElfo.png' },
+    { id: 'Enano', src: 'imagenes/razaEnano.jpg' },
+    { id: 'Orco', src: 'imagenes/razaOrco.png' },
+    { id: 'Espiritu', src: 'imagenes/razaEspiritu.png' }
   ];
 
-  imagenSeleccionada: string = ''; // Almacena el ID de la imagen seleccionada
+ 
+
+  ngOnInit() {
+    this.dataService.raza$.subscribe( raz =>{
+      this.raza = raz
+      console.log("Vengo del servidor soy : "+raz)
+    })
+  }
 
   seleccionarImagen(id: string) {
-    this.imagenSeleccionada = id; // Guarda la imagen seleccionada
+    this.raza = id;
+    this.dataService.actualizarRaza(id) // Guarda la imagen seleccionada
     console.log('Imagen seleccionada:', id); // Puedes enviar este string donde lo necesites
+    this.dataService.ActualizarMensajePersonaje('estadisticas')
   }
 
   
+
+ 
+
+
 }

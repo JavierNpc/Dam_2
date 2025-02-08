@@ -7,25 +7,37 @@ import { PersonajeEstadisticasComponent } from "../personaje-estadisticas/person
 import { PersonajeHabilidadesComponent } from "../personaje-habilidades/personaje-habilidades.component";
 import { PersonajeNombreComponent } from "../personaje-nombre/personaje-nombre.component";
 import { DataService } from '../data.service';
+import { ResumenCreacionPersonajeComponent } from "../resumen-creacion-personaje/resumen-creacion-personaje.component";
 @Component({
   selector: 'app-crear-personaje',
-  imports: [NavbarComponent, NavbarPersonajesComponent, NgSwitch, CommonModule, PersonajeRazaComponent, PersonajeEstadisticasComponent, PersonajeHabilidadesComponent, PersonajeNombreComponent],
+  imports: [NavbarComponent, NavbarPersonajesComponent, NgSwitch, CommonModule, PersonajeRazaComponent, PersonajeEstadisticasComponent, PersonajeHabilidadesComponent, PersonajeNombreComponent, ResumenCreacionPersonajeComponent],
   templateUrl: './crear-personaje.component.html',
   styleUrl: './crear-personaje.component.css'
 })
 export class CrearPersonajeComponent implements OnInit {
-
-  
+ 
 
   conditionExpression: any;
+  terminado: any;
 
   constructor(private dataService:DataService){}
 
   ngOnInit() {
+    this.dataService.terminado$.subscribe(valor =>{
+      this.terminado = valor
+      console.log('Terminado : ' +this.terminado )
+    })
+ 
     this.dataService.mensajeCrearPersonaje$.subscribe(valor => {
       this.conditionExpression = valor
     })
   }
+
+  
+
+  
+
+  
   
 
 

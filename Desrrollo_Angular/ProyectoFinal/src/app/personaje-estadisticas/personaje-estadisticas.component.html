@@ -1,5 +1,22 @@
-<section class="container-personaje min-vh-100 mt-3 rounded-3">
-    <section>
-    <h1>Soy Estadisticas</h1>
-    </section>
-</section>
+<section class="listing-apply mt-5">
+    <h2 class="section-heading ">CREATE NEW HOUSE</h2>
+    <form [formGroup]="formEstadisticas" (ngSubmit)="submitApplication()">
+
+        <label for="vit">Vitalidad:</label>
+        <input id="vit" type="number" formControlName="vit" />
+      
+        <label for="str">Fuerza:</label>
+        <input id="str" type="number" formControlName="str" />
+      
+        <label for="des">Destreza:</label>
+        <input id="des" type="number" formControlName="des" />
+      
+        <label for="res">Resistencia:</label>
+        <input id="res" type="number" formControlName="res" />
+      
+        <label for="arc">Arcano:</label>
+        <input id="arc" type="number" formControlName="arc" />
+      
+        <button class="mt-5" type="submit" [disabled]="formEstadisticas.invalid">Enviar</button>
+    </form>
+  </section>
