@@ -49,7 +49,7 @@ export class DataService {
   }
   obtenerHabilidad(){
     console.log(this.habilidad)
-    return this.habilidad
+    return this.habilidad.value
   }
 
   //--------------------------------------------------------------------------
@@ -132,7 +132,7 @@ export class DataService {
 
   private mensajeCrearPersonaje = new BehaviorSubject<string>('Valor Inicial')
   private botonSeleccionado = new BehaviorSubject<string>("raza")
-  private terminado = new BehaviorSubject<boolean>(false)
+  private terminado = new BehaviorSubject<boolean>(true)
  
   botonSeleccionado$ = this.botonSeleccionado.asObservable()
   mensajeCrearPersonaje$ = this.mensajeCrearPersonaje.asObservable()

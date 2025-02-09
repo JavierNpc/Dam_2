@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { CrearPersonajeComponent } from '../crear-personaje/crear-personaje.component';
 import { CommonModule } from '@angular/common';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-resumen-creacion-personaje',
@@ -11,21 +12,33 @@ import { CommonModule } from '@angular/common';
 })
 export class ResumenCreacionPersonajeComponent implements OnInit {
 
-  raza! : String
+  raza! : string
+  habilidad!: string
+  formEstadisticas! : FormGroup
+  formNombre! : FormGroup
+
   constructor(private dataService:DataService){}
 
+  //Recoger paramentros
 
   ngOnInit() {
    this.raza = this.dataService.obtenerRaza()
+   this.habilidad = this.dataService.obtenerHabilidad()
+   this.formEstadisticas = this.dataService.obtenerFormularioEstadisticas()
+   this.formNombre = this.dataService.obtenerFormularioNombre()
   }
 
-  CrearPersonaje() {
-    throw new Error('Method not implemented.');
-  }
+ 
 
+
+  //  Funcionalidades
   volver() {
    this.dataService.PersonajeTerminado(false)
   }
 
+
+ CrearPersonaje() {
+
+  }
 
 }
