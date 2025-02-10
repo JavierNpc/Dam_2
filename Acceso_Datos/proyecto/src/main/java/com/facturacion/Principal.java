@@ -70,6 +70,8 @@ public class Principal {
 			Document contratos = new Document("id", 1).append("contador", cliente);
 
 			// Insertar el documento en la colección
+
+			
 			collection.insertOne(contratos);
 			System.out.println("Documento de auditoría insertado con éxito!");
 

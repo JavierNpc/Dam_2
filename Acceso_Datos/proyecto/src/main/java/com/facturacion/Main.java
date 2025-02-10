@@ -7,13 +7,17 @@ public class Main {
 
         mongo.Conectar_Con_BBDD();
 
+        mongo.eliminar_Collecion("Enero");
+
         mongo.insertar_Collecion("Enero",100);
 
-       // mongo.eliminar_Collecion("Enero");
+        mongo.update_nombre_contrato_coleccion("Enero", 1, "Dani");
 
-       mongo.bucar_contrato_coleccion("Enero", 1);
-       
-       mongo.Desconectar();
+        mongo.delete_nombre_contrato_coleccion("Enero", "Dani");
+
+        
+
+        mongo.Desconectar();
 
         
 
