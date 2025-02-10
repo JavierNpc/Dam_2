@@ -37,8 +37,14 @@ export class ResumenCreacionPersonajeComponent implements OnInit {
   }
 
 
- CrearPersonaje() {
-
+  CrearPersonaje() {
+    this.dataService.AgregarPersonaje(
+      this.formNombre.get('nombre')?.value,
+      this.formNombre.get('edad')?.value,
+      this.raza,
+      this.formEstadisticas.value,
+      this.habilidad
+    )
   }
 
 }

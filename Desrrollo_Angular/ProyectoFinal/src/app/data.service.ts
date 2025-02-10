@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Personaje } from './Personaje';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -9,7 +9,7 @@ import { fail } from 'assert';
   providedIn: 'root'
 })
 
-export class DataService {
+export class DataService implements OnInit {
 
   // Datos de los personajes
   //--------------------------------------------------------------------------
@@ -26,11 +26,11 @@ export class DataService {
   //--------------------------------------------------------------------------
 
   private fomrEstadisticas = new BehaviorSubject<FormGroup>(new FormGroup({
-    vit: new FormControl(''),
-    str: new FormControl(''),
-    des: new FormControl(''),
-    res: new FormControl(''),
-    arc: new FormControl('')
+    vit: new FormControl(0),
+    str: new FormControl(0),
+    des: new FormControl(0),
+    res: new FormControl(0),
+    arc: new FormControl(0)
   }));
   fomrEstadisticas$ = this.fomrEstadisticas.asObservable()
   actualizarFormEstadisticas(formNew: FormGroup){
@@ -55,8 +55,8 @@ export class DataService {
   //--------------------------------------------------------------------------
 
   private fomrNombre = new BehaviorSubject<FormGroup>(new FormGroup({
-    nombre: new FormControl(),
-    edad: new FormControl()
+    nombre: new FormControl('Sin Nombre'),
+    edad: new FormControl(0)
   }));
   fomrNombre$ = this.fomrNombre.asObservable()
   actualizarFormNombre(newFormN: FormGroup){
@@ -72,10 +72,18 @@ export class DataService {
 
   //Creacion e inserccion de nuevos personajes
 
+  protected id: number = 0
+
+  ngOnInit() {
+    this.id = this.getAllPersonajes().length
+    console.log("numero de personajes = " + this.id)
+  }
+
   protected personajeList: Personaje[] = [
     {
       id: 1,
       nombre: 'Ajaks',
+      edad : 1000,
       raza: 'Elfo',
       estadisticas: [
         10,
@@ -84,10 +92,7 @@ export class DataService {
         10,
         10
       ],
-      habilidades: [
-        'Sigilo',
-        'Robo'
-      ]
+      habilidad: 'Sigilo'
     },
 
   ]
@@ -96,13 +101,13 @@ export class DataService {
     return this.personajeList
   }
 
-  getHousingLocationById(id: number): Personaje | undefined {
+  getPersonajeById(id: number): Personaje | undefined {
     return this.personajeList.find((personaje) => personaje.id === id);
   }
 
-  addHouse( 
-    id: number,
+  AgregarPersonaje( 
     nombre: string,
+    edad : number,
     raza: string,
     estadisticas:[
       vit: number,
@@ -111,28 +116,27 @@ export class DataService {
       res: number,
       arc: number
     ],
-    habilidades: [
-      hab1:string,
-      hab2:string
-    ]
+    habilidad: string
   ){
    this.personajeList.push(
     {
-      id: id,
+      id: this.id + 1,
+      edad : edad,
       nombre: nombre,
       raza: raza,
       estadisticas: estadisticas,
-      habilidades : habilidades
+      habilidad : habilidad
     },
    )
   }
 
+  //--------------------------------------------------------------------------
 
   // Seleccion navbarPersonaje
 
   private mensajeCrearPersonaje = new BehaviorSubject<string>('Valor Inicial')
   private botonSeleccionado = new BehaviorSubject<string>("raza")
-  private terminado = new BehaviorSubject<boolean>(true)
+  private terminado = new BehaviorSubject<boolean>(false)
  
   botonSeleccionado$ = this.botonSeleccionado.asObservable()
   mensajeCrearPersonaje$ = this.mensajeCrearPersonaje.asObservable()

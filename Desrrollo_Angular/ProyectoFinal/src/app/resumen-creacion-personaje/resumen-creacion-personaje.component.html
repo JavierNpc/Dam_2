@@ -1,19 +1,19 @@
 <section>
         
-    <h2 class="h1 mb-5 m-auto fw-bold">RESUMEN PERSONAJE</h2>
+    <h2 class="h1 m-auto fw-bold ">RESUMEN PERSONAJE</h2>
 
     <section class=" row d-flex  justify-content-end">
 
-        <div class="col-12 border   ">
-            <div class=" col-12 cont rounded-4 ">
+        <div class="col-12 ">
+            <div class=" col-12 cont rounded-4  ">
                 <h1 class="fw-bold ">Personal</h1>
                 <div class="w-100  ">
                     <label>Nombre:</label>
-                    <p>{{formNombre.get('nombre')}}</p> 
+                    <p>{{formNombre.get('nombre')?.value}}</p> 
                 </div>
                 <div class="w-100 ">
                     <label>Edad:</label>
-                    <p>{{formNombre.get('edad')}}</p> 
+                    <p>{{formNombre.get('edad')?.value}}</p> 
                 </div>
             </div>
         
@@ -24,23 +24,30 @@
                 </div>
             </div>
 
+            <div class=" col-12  cont rounded-4"> 
+                <h1 class="fw-bold mb-5">Habilidad</h1>
+                <div class=" w-100 ">
+                    <p>{{habilidad}}</p> 
+                </div>
+            </div>
+
             <div class="col-12  cont rounded-4  ">
                 <h1 class="h1 fw-bold ">Estadisticas</h1>
     
                 <label>Vitalidad:</label>
-                <p></p> 
+                <p> {{formEstadisticas.get('vit')?.value}} </p> 
     
                 <label >Fuerza:</label>
-                <p  > </p>
+                <p> {{formEstadisticas.get('str')?.value}} </p>
             
                 <label >Destreza:</label>
-                <p  > </p>
+                <p> {{formEstadisticas.get('des')?.value}} </p>
             
                 <label >Resistencia:</label>
-                <p  > </p>
+                <p> {{formEstadisticas.get('res')?.value}} </p>
             
                 <label >Arcano:</label>
-                <p  > </p>
+                <p> {{formEstadisticas.get('arc')?.value}} </p>
     
                
             </div>

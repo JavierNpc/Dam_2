@@ -1,6 +1,7 @@
 export interface Personaje{
     id: number
     nombre: string
+    edad: number
     raza: string
     estadisticas:[
         vit: number,
@@ -9,8 +10,5 @@ export interface Personaje{
         res: number,
         arc: number
     ]
-    habilidades: [
-        hab1: string,
-        hab2: string
-    ]
+    habilidad:string
 }
