@@ -1,25 +1,18 @@
-.principal{
-    display: flex;
-    align-items: center;
-}
-
+.results {
+    display: grid;
+    column-gap: 14px;
+    row-gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(420px, 400px));
+    margin-top: 50px;
+    justify-content: space-around;
+  }
 
 .container {
-    display: flex;
     background: white;
     border-radius: 10px;
-    align-items: center;
-    justify-content: center;
-    height: 500px;
-   
+    border-style: solid;
+    text-align: center;  
 }
-
-.container:hover{
-   border: 5px;
-   border-style: solid;
-   
-}
-   
 h1 {
     color: #333;
     margin-bottom: 10px;

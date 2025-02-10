@@ -1,17 +1,15 @@
 
-<div class="row justify-content-center m-3 ">
-    <div class="col-md-6 mb-1">
-        <section class="container p-5 min-vh-100  ">
+<div class="row m-3 ">
+    <div class=" principal vh-100 col-md-6 mb-1"  [routerLink]="['/crearpersonaje']">
+        <section class="container p-5  ">
             <h1>Crear Personaje</h1>
-            <button [routerLink]="['/crearpersonaje']">Haz clic aquí</button>
         </section>
     </div>
-    <div class="col-md-6">
-        <section class="container p-5 min-vh-100 ">
+    <div class=" principal vh-100 col-md-6 mb-1" [routerLink]="['/visorpersonajes']">
+        <section class="container p-5">
            
-            <h1 >Personajes</h1>
-            <button [routerLink]="['/listapersonajes']">Haz clic aquí</button>
-          
+            <h1>Personajes</h1>
+           
         </section>
     </div>
 </div>

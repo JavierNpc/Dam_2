@@ -1,4 +1,4 @@
-<section class="listing-apply mt-5">
+<section class="listing-apply mt-5 ">
     
     <form [formGroup]="formNombre" (ngSubmit)="submitApplication()">
 
@@ -8,6 +8,6 @@
         <label for="edad">Edad:</label>
         <input id="edad" type="number" formControlName="edad" />
       
-        <button class="mt-5" type="submit" [disabled]="formNombre.invalid">Enviar</button>
+        <button class="mt-5 mb-5" type="submit" [disabled]="formNombre.invalid">Enviar</button>
     </form>
 </section>

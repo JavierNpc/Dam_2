@@ -1,4 +1,4 @@
-<section>
+<section class="mb-5 mt-5">
         
     <h2 class="h1 m-auto fw-bold ">RESUMEN PERSONAJE</h2>
 
@@ -59,6 +59,6 @@
     </section>
 
     <button class="mt-5 mx-5 p-4 w-25" (click)="volver()"> Volver </button>
-    <button class="mt-5 mx-5 p-4 w-25" (click)="CrearPersonaje()"> Crear Personaje</button>
+    <button class="mt-5  mx-5 p-4 w-25"  [routerLink]="['/visorpersonajes']" (click)="CrearPersonaje() "> Crear Personaje</button>
 
 </section>

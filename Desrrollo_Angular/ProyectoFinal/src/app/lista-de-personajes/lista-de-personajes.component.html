@@ -1,12 +1,40 @@
-<section>
-    
-    <app-navbar></app-navbar>
-  
-    <section class="container p-5 h-auto mb-5 ">
 
-      
-   
-    </section>
+<section class=" listing justify-content-end">
+    <div class="col-12 pt-5">
+        <div class="col-12 row cont rounded-4  ">
+            <div class=" col-lg-12 mb-2">
+                <h1 class="fw-bold"> Nombre: {{Personaje.nombre}}</h1> 
+            </div>
+            <div class="col-lg-12 mb-2 ">
+                <h1 class="fw-bold">Edad: {{Personaje.edad}}</h1>                      
+            </div>
+        </div>
+    
+        <div class=" col-12 mb-3 cont rounded-4"> 
+            <h1 class="fw-bold">Raza: {{Personaje.raza}}</h1>
+        </div>
+
+        <div class=" col-12 mb-3 cont rounded-4"> 
+            <h1 class="fw-bold">Habilidad: {{Personaje.habilidad}}</h1>
+        </div>
+
+        <div class="col-12  cont rounded-4  ">
+            <h1 class="fw-bold">Estadisticas</h1>
+
+            <p> vit: {{Personaje.estadisticas[0]}} </p> 
+            
+            <p> str: {{Personaje.estadisticas[1]}} </p> 
+
+            <p> des: {{Personaje.estadisticas[2]}} </p> 
+
+            <p> res: {{Personaje.estadisticas[3]}} </p> 
+
+            <p> arc: {{Personaje.estadisticas[4]}} </p> 
+
+        </div>
+    
+    </div>
     
 </section>
 
+            <!--  <a [routerLink]="['/details', Personaje.id]">Learn More</a> -->

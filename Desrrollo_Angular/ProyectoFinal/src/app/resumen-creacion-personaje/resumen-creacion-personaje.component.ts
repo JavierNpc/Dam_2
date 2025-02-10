@@ -3,10 +3,11 @@ import { DataService } from '../data.service';
 import { CrearPersonajeComponent } from '../crear-personaje/crear-personaje.component';
 import { CommonModule } from '@angular/common';
 import { FormGroup } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-resumen-creacion-personaje',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './resumen-creacion-personaje.component.html',
   styleUrl: './resumen-creacion-personaje.component.css'
 })
@@ -45,6 +46,7 @@ export class ResumenCreacionPersonajeComponent implements OnInit {
       this.formEstadisticas.value,
       this.habilidad
     )
+    
   }
 
 }

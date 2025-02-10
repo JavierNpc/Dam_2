@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CrearPersonajeComponent } from './crear-personaje/crear-personaje.component';
 import { PersonajeRazaComponent } from './personaje-raza/personaje-raza.component';
 import { ListaDePersonajesComponent } from './lista-de-personajes/lista-de-personajes.component';
+import { VisorDePersonajesComponent } from './visor-de-personajes/visor-de-personajes.component';
 
 export const routes: Routes = [
 
@@ -13,8 +14,8 @@ export const routes: Routes = [
         title: 'Home page',
     },
     {
-        path: 'listapersonajes',
-        component: ListaDePersonajesComponent,
+        path: 'visorpersonajes',
+        component: VisorDePersonajesComponent,
         title: 'Listado de los personajes',
     },
     {

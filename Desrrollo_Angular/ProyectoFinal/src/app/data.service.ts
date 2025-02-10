@@ -4,7 +4,6 @@ import { Personaje } from './Personaje';
 import { FormControl, FormGroup } from '@angular/forms';
 import { fail } from 'assert';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -26,11 +25,11 @@ export class DataService implements OnInit {
   //--------------------------------------------------------------------------
 
   private fomrEstadisticas = new BehaviorSubject<FormGroup>(new FormGroup({
-    vit: new FormControl(0),
-    str: new FormControl(0),
-    des: new FormControl(0),
-    res: new FormControl(0),
-    arc: new FormControl(0)
+    vit: new FormControl(10),
+    str: new FormControl(10),
+    des: new FormControl(10),
+    res: new FormControl(10),
+    arc: new FormControl(10)
   }));
   fomrEstadisticas$ = this.fomrEstadisticas.asObservable()
   actualizarFormEstadisticas(formNew: FormGroup){
@@ -81,6 +80,20 @@ export class DataService implements OnInit {
 
   protected personajeList: Personaje[] = [
     {
+      id: 0,
+      nombre: 'Ajaks',
+      edad : 1000,
+      raza: 'Elfo',
+      estadisticas: [
+        10,
+        10,
+        10,
+        10,
+        10
+      ],
+      habilidad: 'Sigilo'
+    },
+    {
       id: 1,
       nombre: 'Ajaks',
       edad : 1000,
@@ -118,6 +131,7 @@ export class DataService implements OnInit {
     ],
     habilidad: string
   ){
+   
    this.personajeList.push(
     {
       id: this.id + 1,
@@ -128,6 +142,7 @@ export class DataService implements OnInit {
       habilidad : habilidad
     },
    )
+   console.log(estadisticas)
   }
 
   //--------------------------------------------------------------------------

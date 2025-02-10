@@ -1,28 +1,20 @@
-
-
-.container {
-    background: white;
-    border-radius: 10px;
-    border-style: solid;
-    text-align: center;  
-}
-h1 {
-    color: #333;
-    margin-bottom: 10px;
-}
-p {
-    color: #666;
-    margin-bottom: 20px;
-}
-button {
-    background: #7a66ea;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-button:hover {
+.listing {
     background: #5563c1;
+    padding-bottom: 30px;
+    border-color: black;
+    border: 5px;
+    border-style: solid;
+    border-radius: 15px;
+
+
 }
+
+.listing-heading {
+    color: white;
+    font-size: 50px;
+    padding: 10px 20px 0 20px;
+}
+
+
+
+

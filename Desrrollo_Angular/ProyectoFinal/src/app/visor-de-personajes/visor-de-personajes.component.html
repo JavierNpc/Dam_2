@@ -1,0 +1,12 @@
+<section>
+    
+    <app-navbar></app-navbar>
+  
+    <section class="container results  p-5 h-auto mb-5 ">
+       <app-lista-de-personajes class="mb-4 "
+       *ngFor="let personaje of filteredPersonajeList"
+       [Personaje]="personaje"
+       > </app-lista-de-personajes> 
+    </section>
+    
+</section>
