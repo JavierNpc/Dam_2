@@ -1,7 +1,7 @@
 <div class= "row">
     <div 
         *ngFor="let img of imagenes" 
-        class="imagen col-md-6 " 
+        class="imagen col-lg-6 " 
         [ngClass]="{'seleccionada': habilidad === img.id}" 
         (click)="seleccionarImagen(img.id)">
         <img class="rounded-3 mt-3 mb-3  shadow-lg"  [src]="img.src" [alt]="img.id" width="350px">

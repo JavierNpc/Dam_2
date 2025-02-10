@@ -36,7 +36,7 @@ export class DataService implements OnInit {
     this.fomrEstadisticas.next(formNew)
   }
   obtenerFormularioEstadisticas(): FormGroup {
-    return this.fomrEstadisticas.value
+    return this.fomrEstadisticas.getValue()
   }
 
   //--------------------------------------------------------------------------
@@ -74,12 +74,12 @@ export class DataService implements OnInit {
   protected id: number = 0
 
   ngOnInit() {
-    this.id = this.getAllPersonajes().length
-    console.log("numero de personajes = " + this.id)
+    this.id = this.getAllPersonajes().length  ;
+  
   }
 
-  protected personajeList: Personaje[] = [
-    {
+  private personajeList = new BehaviorSubject<Personaje[]>([
+     {
       id: 0,
       nombre: 'Ajaks',
       edad : 1000,
@@ -108,41 +108,25 @@ export class DataService implements OnInit {
       habilidad: 'Sigilo'
     },
 
-  ]
+  ])
+
+  personajelist$ = this.personajeList.asObservable()
+
+ 
 
   getAllPersonajes():Personaje[] {
-    return this.personajeList
+    return this.personajeList.getValue()
   }
 
   getPersonajeById(id: number): Personaje | undefined {
-    return this.personajeList.find((personaje) => personaje.id === id);
+    return this.personajeList.getValue().find((personaje) => personaje.id === id);
   }
 
-  AgregarPersonaje( 
-    nombre: string,
-    edad : number,
-    raza: string,
-    estadisticas:[
-      vit: number,
-      str: number,
-      des: number,
-      res: number,
-      arc: number
-    ],
-    habilidad: string
-  ){
-   
-   this.personajeList.push(
-    {
-      id: this.id + 1,
-      edad : edad,
-      nombre: nombre,
-      raza: raza,
-      estadisticas: estadisticas,
-      habilidad : habilidad
-    },
-   )
-   console.log(estadisticas)
+  AgregarPersonaje( personaje:Personaje){
+    const personajes = this.getAllPersonajes()
+    personajes.push(personaje)
+    this.personajeList.next([...personajes])
+    console.log(personajes.values)
   }
 
   //--------------------------------------------------------------------------

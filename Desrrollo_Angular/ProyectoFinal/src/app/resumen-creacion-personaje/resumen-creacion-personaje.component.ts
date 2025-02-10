@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { CrearPersonajeComponent } from '../crear-personaje/crear-personaje.component';
 import { CommonModule } from '@angular/common';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { Personaje } from '../Personaje';
 @Component({
   selector: 'app-resumen-creacion-personaje',
-  imports: [RouterModule],
+  imports: [RouterModule,FormsModule],
   templateUrl: './resumen-creacion-personaje.component.html',
   styleUrl: './resumen-creacion-personaje.component.css'
 })
@@ -25,8 +25,8 @@ export class ResumenCreacionPersonajeComponent implements OnInit {
   ngOnInit() {
    this.raza = this.dataService.obtenerRaza()
    this.habilidad = this.dataService.obtenerHabilidad()
-   this.formEstadisticas = this.dataService.obtenerFormularioEstadisticas()
    this.formNombre = this.dataService.obtenerFormularioNombre()
+   this.formEstadisticas = this.dataService.obtenerFormularioEstadisticas()
   }
 
  
@@ -39,13 +39,27 @@ export class ResumenCreacionPersonajeComponent implements OnInit {
 
 
   CrearPersonaje() {
-    this.dataService.AgregarPersonaje(
-      this.formNombre.get('nombre')?.value,
-      this.formNombre.get('edad')?.value,
-      this.raza,
-      this.formEstadisticas.value,
-      this.habilidad
-    )
+    this.dataService.ActualizarMensajePersonaje('raza')
+    this.dataService.PersonajeTerminado(false)
+    const nuevoPersonaje : Personaje = {
+      id: this.dataService.getAllPersonajes().length ,
+      nombre : this.formNombre.get('nombre')?.value,
+      edad : this.formNombre.get('edad')?.value,
+      raza : this.raza,
+      estadisticas: [
+        this.formEstadisticas.get('vit')?.value,
+        this.formEstadisticas.get('str')?.value,
+        this.formEstadisticas.get('des')?.value,
+        this.formEstadisticas.get('res')?.value,
+        this.formEstadisticas.get('arc')?.value
+
+      ],
+      habilidad :this.habilidad
+    }
+
+    this.dataService.AgregarPersonaje(nuevoPersonaje)
+
+    
     
   }
 
