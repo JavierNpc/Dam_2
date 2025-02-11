@@ -10,13 +10,22 @@ app.use(cors())
 //Recuperar todad las peliculas
 
 const getAllMovies = (req, res) => {
-
-   const {genero} = req.query
-
-   res.json(movies)
+   const { genero } = req.query
+   console.log(genero)
+    if (genero){
+        
+        const moviesByGenero = movies.filter(
+            movie => movie.genre.includes(genero)
+        )
+        res.json(moviesByGenero)
+    }else{
+        res.json(movies)
+    }
+   
 }
 app.get('/movies', getAllMovies)
 
+//RECUPERAR PELICULA POR ID
 
 const getMoviesByID = (req, res) => {
     const {id} = req.params
@@ -29,9 +38,14 @@ const getMoviesByID = (req, res) => {
 }
 app.get('/movies/:id', getMoviesByID)
 
+//ENDPOINT SUBIR PELICULA
 
+const updateMovie = (req, res) => {
+    newMovie = JSON.parse(req.body)
 
-
+  
+}
+app.post('/movies' , updateMovie)
 
 const PORT = process.env.PORT ?? 1234
     app.listen(PORT, () => {
