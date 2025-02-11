@@ -1,31 +1,15 @@
 package com.facturacion;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.DirectoryStream.Filter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import org.bson.BsonDocument;
-import org.bson.BsonReader;
 import org.bson.Document;
-import org.bson.codecs.BsonDocumentCodec;
 import org.bson.conversions.Bson;
-import org.bson.json.JsonWriterSettings;
-import org.bson.types.ObjectId;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mongodb.bulk.BulkWriteInsert;
-import com.mongodb.bulk.DeleteRequest;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -33,12 +17,10 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
-import com.mongodb.client.model.DeleteOptions;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.InsertOneModel;
 import com.mongodb.client.model.Updates;
 import com.mongodb.client.model.WriteModel;
-import com.mongodb.operation.DeleteOperation;
 
 
 
