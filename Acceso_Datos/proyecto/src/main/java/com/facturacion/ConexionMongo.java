@@ -144,7 +144,7 @@ public class ConexionMongo {
             Document contador = (Document) contrato.get("contador");
             Document consumo = (Document) contador.get("consumo");
 
-            System.out.println(consumo );
+          
 
 
 
