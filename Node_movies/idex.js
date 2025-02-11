@@ -41,8 +41,13 @@ app.get('/movies/:id', getMoviesByID)
 //ENDPOINT SUBIR PELICULA
 
 const updateMovie = (req, res) => {
-    newMovie = JSON.parse(req.body)
+    const newMovie = {
+        id : crypto.randomUUID, 
+        ...req.body
+    } 
+    movies.push(newMovie)
 
+    res.status(201).json(newMovie)
   
 }
 app.post('/movies' , updateMovie)
