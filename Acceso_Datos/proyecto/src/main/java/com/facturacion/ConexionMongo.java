@@ -30,6 +30,7 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.MongoIterable;
 import com.mongodb.client.model.DeleteOptions;
@@ -90,15 +91,15 @@ public class ConexionMongo {
         int num_horas = 23;
         Document[] contrato = new Document[num + 1];
         Document[] dia = new Document[num_dias + 1];
-        Document[] hora = new Document[num_horas + 1];
+        Integer[] hora = new Integer[num_horas + 1];
         ArrayList<Document> dias = new ArrayList<>();
-        ArrayList<Document> horas = new ArrayList<>();
+        ArrayList<Integer> horas = new ArrayList<>();
    
        
 
         // horas
             for (int c = 0; c <= num_horas; c++) {
-                hora[c] = new Document("Wh", random.nextInt(0, 1000));
+                hora[c] =  random.nextInt(0, 1000);
                 horas.add(hora[c]);
             }
         // horas
@@ -150,10 +151,70 @@ public class ConexionMongo {
 
     //--------------------------------------------------------------------
 
+    public void Factura_De_Coleccion(String nombreColeccion){
+        MongoCollection<Document> coleccionVariable = concectar_Coleccion(nombreColeccion);
+        Bson filterBusqueda = Filters.eq("id", 1);
+        MongoCursor<Document> cursor = coleccionVariable.find().cursor() ;
+        int cont = 0;
+        while (cursor.hasNext()) {
+            cont++;
+            Document contrato = cursor.next();
+            Document contador = (Document) contrato.get("contador");
+            Document consumo = (Document) contador.get("consumo");
+
+            System.out.println(consumo );
+
+
+
+            /* Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            try {
+                File arch1 = new File("/home/javmaccas/Escriptori/Dam_2/Acceso_Datos/proyecto/src/main/java/com/facturacion/ach2.json");
+                FileWriter fWriter = new FileWriter(arch1);
+              
+                System.out.println("Buscando Contrato");
+                
+                String json = gson.toJson(consumo);  
+                fWriter.write(json);
+                System.out.print(json);
+
+            } catch ( Exception e) {
+                System.out.println("\nNo existe esa colecion\n");
+            } */
+
+            /* for ( Document contador  : (Iterable<Document>) contrato.get("contador")){
+                for( Document consumo : (Iterable<Document>) contador.get("consumo")){
+                    ArrayList<Document> dias = new ArrayList<>();
+                    dias.add(consumo);
+                    for( Document  dia : dias){
+                        ArrayList<Document> horas = new ArrayList<>();
+                        horas.add(dia);
+                        System.out.println(horas.toString());
+                    }
+                }
+            }
+ */
+        }
+        
+        System.out.println(cont);
+
+
+       
+        
+
+
+    }
+
+
+
+
+
+    //--------------------------------------------------------------------
+
+
+
     public void update_nombre_contrato_coleccion(String nombreColeccion, int id, String newNombre) {
 
         MongoCollection<Document> col = concectar_Coleccion(nombreColeccion);
-        FindIterable<Document> doc = null ;
         Bson filterBusqueda = Filters.eq("id", id);
         Bson filterRemplazo = Updates.set("clientes.nombre", newNombre);
 
@@ -257,11 +318,7 @@ public class ConexionMongo {
     }
       
 
-
-
-
-
-
+    
     //--------------------------------------------------------------
 
     private void concectar_Coleccion_O_Crear(String nombreColeccion){
