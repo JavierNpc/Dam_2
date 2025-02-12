@@ -90,7 +90,7 @@ public class ConexionMongo {
         // horas
             for (int c = 0; c <= num_horas; c++) {
                 precio[c] =  random.nextDouble(0.1, 0.9);
-                hora[c] =  random.nextInt(0, 1000);
+                hora[c] =  random.nextInt(0, 100);
                 precios.add(precio[c]);
                 horas.add(hora[c]);
             }
@@ -169,13 +169,17 @@ public class ConexionMongo {
             } 
 
         }
-
-        for (List<Integer> list : horasMes) {
-           for (List<Integer> list2 : horasMes) {
-            
-           }
-          
+        Double precioFactura = 0.0;
+        for (List<Integer> horasDia : horasMes) {
+            for (Integer hora : horasDia) {
+                precioFactura += (hora * precios.get(cont2));
+                if( cont2 == 23){
+                    cont2 = 0;
+                }
+                cont2++;
+            } 
         }
+        System.out.println(precioFactura);
     
         System.out.println(cont);
 
