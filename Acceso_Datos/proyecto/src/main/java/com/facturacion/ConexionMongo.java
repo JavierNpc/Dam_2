@@ -3,6 +3,7 @@ package com.facturacion;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -36,11 +37,19 @@ public class ConexionMongo {
     MongoClient conexionMongo;
     MongoDatabase db;
     MongoCollection<Document> collection;
+    ArrayList<Double> precios  = new ArrayList<>();
 
     public ConexionMongo(String user, String password, String host, int puerto, String database) {
         this.puerto = puerto;
         this.host = host;
         url = "mongodb://" + user + ":" + password + "@" + host + ":" + puerto;
+        this.database = database;
+    }
+
+    public ConexionMongo(String host, int puerto, String database) {
+        this.puerto = puerto;
+        this.host = host;
+        url = "mongodb://" + host + ":" + puerto;
         this.database = database;
     }
 
@@ -74,14 +83,15 @@ public class ConexionMongo {
         Document[] contrato = new Document[num + 1];
         Document[] dia = new Document[num_dias + 1];
         Integer[] hora = new Integer[num_horas + 1];
+        Double[] precio = new Double[num_horas + 1];
         ArrayList<Document> dias = new ArrayList<>();
         ArrayList<Integer> horas = new ArrayList<>();
-   
-       
-
+     
         // horas
             for (int c = 0; c <= num_horas; c++) {
+                precio[c] =  random.nextDouble(0.1, 0.9);
                 hora[c] =  random.nextInt(0, 1000);
+                precios.add(precio[c]);
                 horas.add(hora[c]);
             }
         // horas
@@ -136,47 +146,37 @@ public class ConexionMongo {
     public void Factura_De_Coleccion(String nombreColeccion){
         MongoCollection<Document> coleccionVariable = concectar_Coleccion(nombreColeccion);
         Bson filterBusqueda = Filters.eq("id", 1);
-        MongoCursor<Document> cursor = coleccionVariable.find().cursor() ;
+        MongoCursor<Document> cursor = coleccionVariable.find(filterBusqueda).cursor() ;
         int cont = 0;
+        int cont2 = 0;
+
+        List<List<Integer>> horasMes = new ArrayList<>();
+        
         while (cursor.hasNext()) {
             cont++;
             Document contrato = cursor.next();
             Document contador = (Document) contrato.get("contador");
             Document consumo = (Document) contador.get("consumo");
 
-          
+           
 
-
-
-            /* Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            try {
-                File arch1 = new File("/home/javmaccas/Escriptori/Dam_2/Acceso_Datos/proyecto/src/main/java/com/facturacion/ach2.json");
-                FileWriter fWriter = new FileWriter(arch1);
-              
-                System.out.println("Buscando Contrato");
-                
-                String json = gson.toJson(consumo);  
-                fWriter.write(json);
-                System.out.print(json);
-
-            } catch ( Exception e) {
-                System.out.println("\nNo existe esa colecion\n");
-            } */
-
-            /* for ( Document contador  : (Iterable<Document>) contrato.get("contador")){
-                for( Document consumo : (Iterable<Document>) contador.get("consumo")){
-                    ArrayList<Document> dias = new ArrayList<>();
-                    dias.add(consumo);
-                    for( Document  dia : dias){
-                        ArrayList<Document> horas = new ArrayList<>();
-                        horas.add(dia);
-                        System.out.println(horas.toString());
-                    }
+            for (Document dias :  (Iterable<Document>)  consumo.get("dias")) {
+                List<Integer> horaArray = (List<Integer>) dias.get("hora"); 
+                if (horaArray != null && !horaArray.isEmpty()) {
+                    horasMes.add(horaArray); // Agregar valores al array final
                 }
-            }
- */
+              
+            } 
+
         }
-        
+
+        for (List<Integer> list : horasMes) {
+           for (List<Integer> list2 : horasMes) {
+            
+           }
+          
+        }
+    
         System.out.println(cont);
 
 
