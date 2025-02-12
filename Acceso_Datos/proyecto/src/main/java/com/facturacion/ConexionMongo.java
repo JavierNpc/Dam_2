@@ -37,7 +37,8 @@ public class ConexionMongo {
     MongoClient conexionMongo;
     MongoDatabase db;
     MongoCollection<Document> collection;
-    ArrayList<Double> precios  = new ArrayList<>();
+
+    List<List<Integer>> horasContrato = new ArrayList<>();
 
     public ConexionMongo(String user, String password, String host, int puerto, String database) {
         this.puerto = puerto;
@@ -75,7 +76,6 @@ public class ConexionMongo {
 
         concectar_Coleccion_O_Crear(nombreColeccion);
 
-        
         int num = num_contratos;
         Random random = new Random();
         int num_dias = 29;
@@ -89,9 +89,9 @@ public class ConexionMongo {
      
         // horas
             for (int c = 0; c <= num_horas; c++) {
-                precio[c] =  random.nextDouble(0.1, 0.9);
+                precio[c] =  random.nextDouble(0.01, 0.09);
                 hora[c] =  random.nextInt(0, 100);
-                precios.add(precio[c]);
+         
                 horas.add(hora[c]);
             }
         // horas
@@ -131,22 +131,26 @@ public class ConexionMongo {
             contrato[c] = new Document("id", c)
                     .append("clientes", cliente)
                     .append("contador", contador);
+                    
 
             operaciones.add(new InsertOneModel<Document>(contrato[c]));
         }
-
+        //Inserccion en Bloque
         collection.bulkWrite(operaciones);
-
         // Contrato
 
     }
 
     //--------------------------------------------------------------------
 
+
+
+   
+
     public void Factura_De_Coleccion(String nombreColeccion){
         MongoCollection<Document> coleccionVariable = concectar_Coleccion(nombreColeccion);
         Bson filterBusqueda = Filters.eq("id", 1);
-        MongoCursor<Document> cursor = coleccionVariable.find(filterBusqueda).cursor() ;
+        MongoCursor<Document> cursor = coleccionVariable.find().cursor() ;
         int cont = 0;
         int cont2 = 0;
 
@@ -169,24 +173,8 @@ public class ConexionMongo {
             } 
 
         }
-        Double precioFactura = 0.0;
-        for (List<Integer> horasDia : horasMes) {
-            for (Integer hora : horasDia) {
-                precioFactura += (hora * precios.get(cont2));
-                if( cont2 == 23){
-                    cont2 = 0;
-                }
-                cont2++;
-            } 
-        }
-        System.out.println(precioFactura);
-    
+      
         System.out.println(cont);
-
-
-       
-        
-
 
     }
 
