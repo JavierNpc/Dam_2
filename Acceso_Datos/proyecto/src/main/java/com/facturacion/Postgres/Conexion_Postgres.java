@@ -1,5 +1,6 @@
 package com.facturacion.Postgres;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -33,7 +34,17 @@ public class Conexion_Postgres {
     public void inertarDatos(int num_contratos) {
 
         PreparedStatement sentencia_clientes = null;
-       
+        PreparedStatement sentenciaAltaProducto = null;
+        PreparedStatement sentenciaRelacionProducto = null;
+
+        ArrayList<ArrayList<Integer>> dias = new ArrayList<>();
+        // Agregar dos días, cada uno con su propio ArrayList de horas
+        for (int i = 0; i < 2; i++) {
+            ArrayList<Integer> horas = new ArrayList<>();
+            horas.add(i);
+            dias.add(horas);
+        }
+
         for (int i = 0; i < num_contratos; i++) {
 
             String Datos_Clientes = ("Javier "+i+","+"Maceda "+i);
@@ -53,32 +64,38 @@ public class Conexion_Postgres {
             }
 
             try {
-            //Inicia transacción
-            conexion.setAutoCommit(false);
+                //Inicia transacción
+                conexion.setAutoCommit(false);
+
+                String sqlAltaProducto = "INSERT INTO Contador (id_contador, dias) VALUES (?,? )";
             
-            PreparedStatement sentenciaAltaProducto = conexion.prepareStatement(sqlAltaProducto, PreparedStatement.RETURNS_GENERATED_KEYS); 
-            sentenciaAltaProducto.setString(1, nombreProducto); 
-            sentenciaAltaProducto.setFloat(2, precioProducto); sentencia.executeUpdate();
-        
+                // ARRAY[ ROW(ARRAY[8,3])::horas_dia, ROW(ARRAY[8,7])::horas_dia ]
+                sentenciaAltaProducto = conexion.prepareStatement(sqlAltaProducto); 
+                sentenciaAltaProducto.setInt(1, i); 
+                sentenciaAltaProducto.setArray(2, (Array) dias);
+                sentenciaAltaProducto.executeUpdate();
             
-            PreparedStatement sentenciaRelacionProducto =
-                                conexion.prepareStatement(sqlRelacionProducto);
-            sentenciaRelacionProducto.setInt(1, idProducto);
-            sentenciaRelacionProducto.setInt(2, idCategoria);
-            sentenciaRelacionProducto.executeUpdate();
-            
-            // Valida la transacción
-            conexion.commit();
+                String sqlRelacionProducto = "INSERT INTO Cliente_contador (mes, nombre, apellido, id_contador) VALUES (?, ?, ?, ?),";
+                
+                sentenciaRelacionProducto = conexion.prepareStatement(sqlRelacionProducto);
+                sentenciaRelacionProducto.setString(1, "Enero");
+                sentenciaRelacionProducto.setString(2, "Javier "+i);
+                sentenciaRelacionProducto.setString(3, "Maceda "+i);
+                sentenciaRelacionProducto.setInt(4, i);
+                sentenciaRelacionProducto.executeUpdate();
+                
+                // Valida la transacción
+                conexion.commit();
             } catch (SQLException sqle) {
-            sqle.printStackTrace();
-            } finally {
-            if (sentencia != null)
-                try {
-                sentencia.close();
-                resultado.close();
-                } catch (SQLException sqle) {
                 sqle.printStackTrace();
-                }
+            } finally {
+                if (sentenciaAltaProducto != null && sentenciaRelacionProducto != null)
+                    try {
+                        sentenciaAltaProducto.close();
+                        sentenciaRelacionProducto.close();
+                    } catch (SQLException sqle) {
+                        sqle.printStackTrace();
+                    }
             }
 
         }
