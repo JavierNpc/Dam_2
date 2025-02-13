@@ -34,7 +34,7 @@ CREATE table Contador(
 );
 
 Create table Cliente_contador(
-    mes VARCHAR (255)
+    mes VARCHAR (255),
 	nombre VARCHAR(255) ,
 	apellido VARCHAR(255),
 	id_contador Integer,
@@ -48,10 +48,6 @@ Create table Cliente_contador(
 
 
 
-CREATE CONSTRAINT TRIGGER contador_existe
-After INSERT on Contador
-DEFERRABLE INITIALLY DEFERRED
-for EACH row EXECUTE FUNCTION contador_existe_fn();
 
 
 CREATE OR REPLACE FUNCTION contador_existe_fn()
@@ -70,6 +66,10 @@ END;
 $body$;	
 
 
+CREATE CONSTRAINT TRIGGER contador_existe
+After INSERT on Contador
+DEFERRABLE INITIALLY DEFERRED
+for EACH row EXECUTE FUNCTION contador_existe_fn();
 
 
 INSERT INTO Contador (id_contador, dias) 
