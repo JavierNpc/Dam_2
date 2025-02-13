@@ -1,4 +1,4 @@
-package com.facturacion;
+package com.facturacion.Mongo;
 
 import java.io.File;
 import java.io.FileWriter;

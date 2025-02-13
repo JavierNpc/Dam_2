@@ -1,5 +1,8 @@
 package com.facturacion;
 
+import com.facturacion.Mongo.ConexionMongo;
+import com.facturacion.Mongo.Facturas;
+
 public class Main {
     public static void main(String[] args) {
      
@@ -24,6 +27,8 @@ public class Main {
         mongo.Desconectar(); */
 
         facturas.Conectar_Con_BBDD();
+
+
 
         facturas.crear_factura_coleccion("Enero");
 
