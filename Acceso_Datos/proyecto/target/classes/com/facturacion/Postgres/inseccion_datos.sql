@@ -1,15 +1,15 @@
 -- Insertar 10 clientes
-INSERT INTO Clientes (nombre, apellido) VALUES 
-('Juan', 'Pérez'),
-('María', 'González'),
-('Carlos', 'López'),
-('Ana', 'Martínez'),
-('Luis', 'Fernández'),
-('Elena', 'Torres'),
-('Pedro', 'Gómez'),
-('Laura', 'Díaz'),
-('Roberto', 'Ruiz'),
-('Carmen', 'Sánchez');
+INSERT INTO Clientes (dni,nombre, apellido) VALUES 
+(123459,'Juan', 'Pérez'),
+(123458,'María', 'González'),
+(123457,'Carlos', 'López'),
+(123456,'Ana', 'Martínez'),
+(123455,'Luis', 'Fernández'),
+(123454,'Elena', 'Torres'),
+(123453,'Pedro', 'Gómez'),
+(123452,'Laura', 'Díaz'),
+(123451,'Roberto', 'Ruiz'),
+(123450,'Carmen', 'Sánchez');
 
 Begin;
 
@@ -28,16 +28,16 @@ INSERT INTO Contador (id_contador, dias) VALUES
 
 -- Insertar 10 relaciones Cliente-Contador
 INSERT INTO Cliente_contador (mes, nombre, apellido, id_contador) VALUES
-('Enero', 'Juan', 'Pérez', 1),
-('Febrero', 'María', 'González', 2),
-('Marzo', 'Carlos', 'López', 3),
-('Abril', 'Ana', 'Martínez', 4),
-('Mayo', 'Luis', 'Fernández', 5),
-('Junio', 'Elena', 'Torres', 6),
-('Julio', 'Pedro', 'Gómez', 7),
-('Agosto', 'Laura', 'Díaz', 8),
-('Septiembre', 'Roberto', 'Ruiz', 9),
-('Octubre', 'Carmen', 'Sánchez', 10);
+(123459, 1),
+(123458, 2),
+(123457, 3),
+(123456, 4),
+(123455, 5),
+(123454, 6),
+(123453, 7),
+(123452, 8),
+(123451, 9),
+(123450, 10);
 
 
 

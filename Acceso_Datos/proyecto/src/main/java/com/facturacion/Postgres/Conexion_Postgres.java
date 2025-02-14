@@ -45,31 +45,48 @@ public class Conexion_Postgres {
     }
 
 
-    public void inseccionMasiva(int num_archivos){
+    public void inseccionMasiva(int numero_archivos){
 
-        String consulta = "SELECT cont(*) FROM cliente_contador_enero ";
-        String rutaSQL = "/home/javmaccas/Escriptori/Dam_2/Acceso_Datos/proyecto/src/main/java/com/facturacion/Postgres/datos_sql.sql"; 
-        File sql_datos = new File(rutaSQL);
+        String consulta = "SELECT cont(*) as total FROM cliente_contador_enero ";
+        String rutaSQL_linux = "/proyecto/src/main/java/com/facturacion/Postgres/datos_sql.sql";
+        String rutaSQL_win = "src\\main\\java\\com\\facturacion\\Postgres\\datos_sql.sql" ;
+        File sql_datos = new File(rutaSQL_linux);
+        int num_contratos = 0;
 
-        PreparedStatement pstmt = conexion.prepareStatement(consulta);
-       
+        ArrayList<String> dnis = new ArrayList<>();
+
+        dnis = generarDNIs(numero_archivos);
 
         try {
+            PreparedStatement pstmt = conexion.prepareStatement(consulta);
+            ResultSet rs = pstmt.executeQuery();
+            if(rs.next()){
+                num_contratos = rs.getInt("total");
+            }
+        } catch (SQLException e) {
+           
+            e.printStackTrace();
+        }
 
+        int num_archivos = num_contratos + numero_archivos;
+       
+        try {
             FileWriter  fWriter = new FileWriter(sql_datos);
             BufferedWriter bw = new BufferedWriter(fWriter);
 
-            for (int i = 0; i <= num_archivos; i++) {
+            for (int i = num_contratos; i <= num_archivos; i++) {
+                String dni = dnis.get(i);
                 String nombre = "javier "+i;
                 String apellido = "maceda "+i;
-                bw.write("INSERT INTO clientes (nombre, apellido) VALUES (' "+nombre+"','"+apellido+"');");
+                bw.write("INSERT INTO clientes (dni,nombre, apellido) VALUES ("+dni+",'"+nombre+"','"+apellido+"');");
                 bw.newLine();
             }
+
             bw.newLine();
             bw.write("Begin;");
             bw.newLine();
 
-            for (int i = 0; i <= num_archivos; i++) {
+            for (int i = num_contratos; i <= num_archivos; i++) {
                 int id_contador = i;
                 String dias = "ARRAY[ ROW(ARRAY[8,3])::horas_dia, ROW(ARRAY[8,7])::horas_dia ]";
                 bw.write("INSERT INTO contador (id_contador, dias) VALUES ( "+id_contador+" ,"+dias+");");
@@ -78,46 +95,33 @@ public class Conexion_Postgres {
 
             bw.newLine();
 
-            for (int i = 0; i <= num_archivos; i++) {
-                String nombre = "javier "+i;
-                String apellido = "maceda "+i;
+            for (int i = num_contratos; i <= num_archivos; i++) {
+                String dni =  dnis.get(i);
                 int id_contador = i;
-                bw.write("INSERT INTO cliente_contador_enero (nombre, apellido, id_contador) VALUES (' "+nombre+"','"+apellido+"',"+id_contador+");");
+                bw.write("INSERT INTO cliente_contador_enero ( id_contador) VALUES ('"+dni+"',"+id_contador+");");
                 bw.newLine();
             }
 
             bw.write("Commit;");
             bw.newLine();
-
             bw.close();
-            
         }catch (IOException e) {
-
             e.printStackTrace();
         }
 
-
         try {
             Statement stmt = conexion.createStatement();
-            String sql = new String(Files.readAllBytes(Paths.get(rutaSQL)));
-
-            stmt.execute(sql);
-            
+            String sql = new String(Files.readAllBytes(Paths.get(rutaSQL_linux)));
+            stmt.execute(sql); 
         } catch (IOException | SQLException e) {
             System.out.println("Error al cargar los datos");
             e.printStackTrace();
         }
-
-
-            
-    
-
-
-
     }
 
 
-    public void inertarDatos(int num_contratos) {
+    /* public void inertarDatos(int num_contratos) { 
+        !No esta actualizado, utilizar este metodo con arrays es muy complejo
 
         PreparedStatement sentencia_clientes = null;
         PreparedStatement sentenciaAltaProducto = null;
@@ -132,12 +136,13 @@ public class Conexion_Postgres {
      
         for (int i = 0; i < num_contratos; i++) {
 
-            String Datos_Clientes = "INSERT INTO clientes (nombre, apellido) VALUES (?,?)";
+            String Datos_Clientes = "INSERT INTO clientes (dni, nombre, apellido) VALUES (?,?)";
             
             try {
                 sentencia_clientes = conexion.prepareStatement(Datos_Clientes);
                 sentencia_clientes.setString(1, "Javier "+i);
-                sentencia_clientes.setString(2, "Maceda "+i);
+                sentencia_clientes.setString(2, "Javier "+i);
+                sentencia_clientes.setString(3, "Maceda "+i);
                 sentencia_clientes.executeUpdate();
             } catch (SQLException sqle) {
                 sqle.printStackTrace();
@@ -193,32 +198,19 @@ public class Conexion_Postgres {
         }
     }
 
-    /**
-     * @param tabla   = String
-     * @param valores = String : La forma de colocarlos es = "Javier Maceda Castro".
-     *                Se guarda en un ( String[] valores ) y hace las particiones a
-     *                traves de .split(" ")
-     * @return
-     *         sentecia = "Insert into "tu_tabla" values (valores[0], valores[1],
-     *         ...)
-     */
-    private String EscribirSentecia(String tabla, String valores) {
-        String[] valores_lista = valores.split(",");
+    */
 
-        switch (valores_lista.length) {
-            case 1:
-                return "INSERT INTO " + tabla + " (nombre, apellido) VALUES ('" + valores_lista[0] + "')";
-            case 2:
-                return "INSERT INTO " + tabla + " (nombre, apellido) VALUES ('" + valores_lista[0] + "','"
-                        + valores_lista[1] + "')";
-            case 3:
-                return "INSERT INTO " + tabla + " (nombre, apellido) VALUES ('" + valores_lista[0] + "','"
-                        + valores_lista[1] + "','" + valores_lista[2] + "')";
-            case 4:
-                return "INSERT INTO " + tabla + " (nombre, apellido) VALUES ('" + valores_lista[0] + "','"
-                        + valores_lista[1] + "','" + valores_lista[2] + "','" + valores_lista[3] + "')";
-            default:
-                return null;
+    private static  ArrayList<String> generarDNIs(int cantidad) {
+        ArrayList<String> dnis = new ArrayList<>();
+        Random random = new Random();
+        String letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE"; // Letras válidas para DNI en España
+
+        for (int i = 0; i < cantidad; i++) {
+            int numeroDNI = 10000000 + random.nextInt(90000000); // Número entre 10000000 y 99999999
+            char letra = letrasDNI.charAt(numeroDNI % 23); // Obtener la letra según el módulo 23
+            dnis.add(numeroDNI + "" + letra); // Guardar en el ArrayList
         }
+
+        return dnis;
     }
 }

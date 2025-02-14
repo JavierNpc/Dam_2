@@ -1,7 +1,7 @@
 CREATE table Clientes(
+    dni VARCHAR(255) PRIMARY KEY,
 	nombre VARCHAR(255) ,
 	apellido VARCHAR(255),
-	PRIMARY KEY (nombre,apellido)
 );
 
 CREATE  Type horas_dia as (
@@ -37,11 +37,10 @@ CREATE table Contador(
 );
 
 Create table Cliente_contador_Enero(
-	nombre VARCHAR(255) ,
-	apellido VARCHAR(255),
+	dni VARCHAR(255),
 	id_contador Integer,
-	PRIMARY KEY (nombre,apellido,id_contador),
-	constraint fk_cliente FOREIGN key (nombre,apellido) REFERENCES Clientes(nombre,apellido) on delete cascade on update cascade,
+	PRIMARY KEY (dni,id_contador),
+	constraint fk_cliente FOREIGN key (dni) REFERENCES Clientes(dni) on delete cascade on update cascade,
 	constraint fk_contador FOREIGN key (id_contador) REFERENCES Contador(id_contador)on delete cascade on update cascade
 
 );
