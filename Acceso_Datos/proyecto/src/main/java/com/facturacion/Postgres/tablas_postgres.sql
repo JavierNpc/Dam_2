@@ -25,6 +25,9 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
 
+CREATE  Type horas_dia as (
+	horas NUMERIC[2]
+);
 
 CREATE table Contador(
 	id_contador Integer PRIMARY KEY,
@@ -33,12 +36,11 @@ CREATE table Contador(
     CONSTRAINT check_horas CHECK (check_mediciones_tamanio(dias)) -- Cada día debe tener 24 horas
 );
 
-Create table Cliente_contador(
-    mes VARCHAR (255),
+Create table Cliente_contador_Enero(
 	nombre VARCHAR(255) ,
 	apellido VARCHAR(255),
 	id_contador Integer,
-	PRIMARY KEY (mes,nombre,apellido,id_contador),
+	PRIMARY KEY (nombre,apellido,id_contador),
 	constraint fk_cliente FOREIGN key (nombre,apellido) REFERENCES Clientes(nombre,apellido) on delete cascade on update cascade,
 	constraint fk_contador FOREIGN key (id_contador) REFERENCES Contador(id_contador)on delete cascade on update cascade
 

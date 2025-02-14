@@ -1,5 +1,11 @@
 package com.facturacion;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.facturacion.Mongo.ConexionMongo;
@@ -36,16 +42,25 @@ public class Main {
 
         //·   POSTGRES                                          
 
+        
+            
 
        Conexion_Postgres postgres = new Conexion_Postgres("GestionEnergetica_post","mati","mati");
 
         postgres.ConectarConBBDD();
-        postgres.inertarDatos(2);
-        
+        //postgres.inertarDatos(2);
+        postgres.inseccionMasiva(5);
+
+      
+
 
         
-        
+       
+       
+     
         
     }  
+
+
 
 }
