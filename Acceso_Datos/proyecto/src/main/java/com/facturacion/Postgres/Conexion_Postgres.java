@@ -45,19 +45,19 @@ public class Conexion_Postgres {
     }
 
 
-    public void inseccionMasiva(int numero_archivos){
+    public void inseccionMasiva(int num_archivos){
 
         String consulta = "SELECT cont(*) as total FROM cliente_contador_enero ";
-        String rutaSQL_linux = "/proyecto/src/main/java/com/facturacion/Postgres/datos_sql.sql";
+        String rutaSQL_linux = "src/main/java/com/facturacion/Postgres/datos_sql.sql";
         String rutaSQL_win = "src\\main\\java\\com\\facturacion\\Postgres\\datos_sql.sql" ;
         File sql_datos = new File(rutaSQL_linux);
-        int num_contratos = 0;
+       // int num_contratos = 0;
 
         ArrayList<String> dnis = new ArrayList<>();
 
-        dnis = generarDNIs(numero_archivos);
+        dnis = generarDNIs(num_archivos+1);
 
-        try {
+       /*  try {
             PreparedStatement pstmt = conexion.prepareStatement(consulta);
             ResultSet rs = pstmt.executeQuery();
             if(rs.next()){
@@ -67,18 +67,17 @@ public class Conexion_Postgres {
            
             e.printStackTrace();
         }
-
-        int num_archivos = num_contratos + numero_archivos;
+ */
        
         try {
             FileWriter  fWriter = new FileWriter(sql_datos);
             BufferedWriter bw = new BufferedWriter(fWriter);
 
-            for (int i = num_contratos; i <= num_archivos; i++) {
+            for (int i = 0; i <= num_archivos; i++) {
                 String dni = dnis.get(i);
                 String nombre = "javier "+i;
                 String apellido = "maceda "+i;
-                bw.write("INSERT INTO clientes (dni,nombre, apellido) VALUES ("+dni+",'"+nombre+"','"+apellido+"');");
+                bw.write("INSERT INTO clientes (dni,nombre, apellido) VALUES ('"+dni+"','"+nombre+"','"+apellido+"');");
                 bw.newLine();
             }
 
@@ -86,7 +85,7 @@ public class Conexion_Postgres {
             bw.write("Begin;");
             bw.newLine();
 
-            for (int i = num_contratos; i <= num_archivos; i++) {
+            for (int i = 0; i <= num_archivos; i++) {
                 int id_contador = i;
                 String dias = "ARRAY[ ROW(ARRAY[8,3])::horas_dia, ROW(ARRAY[8,7])::horas_dia ]";
                 bw.write("INSERT INTO contador (id_contador, dias) VALUES ( "+id_contador+" ,"+dias+");");
@@ -95,10 +94,10 @@ public class Conexion_Postgres {
 
             bw.newLine();
 
-            for (int i = num_contratos; i <= num_archivos; i++) {
+            for (int i = 0; i <= num_archivos; i++) {
                 String dni =  dnis.get(i);
                 int id_contador = i;
-                bw.write("INSERT INTO cliente_contador_enero ( id_contador) VALUES ('"+dni+"',"+id_contador+");");
+                bw.write("INSERT INTO cliente_contador_enero (dni, id_contador) VALUES ('"+dni+"',"+id_contador+");");
                 bw.newLine();
             }
 
@@ -206,7 +205,7 @@ public class Conexion_Postgres {
         String letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKE"; // Letras válidas para DNI en España
 
         for (int i = 0; i < cantidad; i++) {
-            int numeroDNI = 10000000 + random.nextInt(90000000); // Número entre 10000000 y 99999999
+            int numeroDNI = 100000000 + random.nextInt(900000000); // Número entre 100000000 y 999999999
             char letra = letrasDNI.charAt(numeroDNI % 23); // Obtener la letra según el módulo 23
             dnis.add(numeroDNI + "" + letra); // Guardar en el ArrayList
         }

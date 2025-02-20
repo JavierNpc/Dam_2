@@ -1,7 +1,7 @@
 CREATE table Clientes(
     dni VARCHAR(255) PRIMARY KEY,
 	nombre VARCHAR(255) ,
-	apellido VARCHAR(255),
+	apellido VARCHAR(255)
 );
 
 CREATE  Type horas_dia as (
@@ -80,3 +80,4 @@ VALUES (11, ARRAY[ ROW(ARRAY[8,3])::horas_dia, ROW(ARRAY[8,7])::horas_dia ]);
 
 
 
+ROLLBACK;

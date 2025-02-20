@@ -27,7 +27,7 @@ INSERT INTO Contador (id_contador, dias) VALUES
 (10,ARRAY[ ROW(ARRAY[8,3])::horas_dia, ROW(ARRAY[8,7])::horas_dia ]);
 
 -- Insertar 10 relaciones Cliente-Contador
-INSERT INTO Cliente_contador (mes, nombre, apellido, id_contador) VALUES
+INSERT INTO Cliente_contador_enero (dni, id_contador) VALUES
 (123459, 1),
 (123458, 2),
 (123457, 3),
@@ -42,3 +42,6 @@ INSERT INTO Cliente_contador (mes, nombre, apellido, id_contador) VALUES
 
 
 COMMIT;
+
+
+
